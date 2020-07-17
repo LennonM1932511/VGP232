@@ -221,7 +221,7 @@ namespace Assignment1
                         // write data
                         for (int i = 0; i < results.Count; i++)
                         {                            
-                            writer.WriteLine(results[i]);
+                            writer.WriteLine(results[i]); // write line
                         }
                         
                     }

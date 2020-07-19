@@ -78,6 +78,7 @@ namespace Assignment1
         {
             // construct a string to return with the following format
             // Nat,Pokemon,HP,Atk,Def,SpA,SpD,Spe,Total
+            // LC: good.
             return String.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8}", Index, Name, HP, Attack, Defense, SpecialAttack, SpecialDefense, Speed, Total);
         }        
     }

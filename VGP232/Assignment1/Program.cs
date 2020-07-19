@@ -5,6 +5,7 @@ using System.IO;
 // Assignment 1
 // NAME: Lennon Marshall
 // STUDENT NUMBER: 1932511
+// MARKS: 100/100 Excellent work! Minor issue, there's some trailing spaces in a few of the code blocks, you might want to Format Document i.e. CTRL + K + CTRL + D or F in selection to clean it up.
 
 namespace Assignment1
 {
@@ -88,6 +89,7 @@ namespace Assignment1
                     {
                         // validation to make sure we do have an argument after the flag
                         ++i;
+                        // LC: there's some trailing spacing, you can use CTRL + K and CTRL + F to remove it.
                         sortColumnName = args[i];                        
                     }                    
                 }
@@ -136,7 +138,7 @@ namespace Assignment1
 
             if (sortEnabled)
             {              
-
+                // LC: good.
                 // determine the column name to trigger a different sort.
                 if (string.IsNullOrEmpty(sortColumnName) || sortColumnName.Equals("index", StringComparison.InvariantCultureIgnoreCase))
                 {
@@ -215,6 +217,7 @@ namespace Assignment1
                         // write data header if creating new file
                         if (writeHeader)
                         {
+                            // LC: excellent to add the header back in.
                             writer.WriteLine("Nat,Pokemon,HP,Atk,Def,SpA,SpD,Spe,Total");
                         }                        
 
@@ -269,6 +272,7 @@ namespace Assignment1
                     Pokemon pokemon = new Pokemon();
 
                     // check if there are 9 values
+                    // LC: good.
                     if (values.Length != 9)
                     {
                         Console.WriteLine("Invalid data struture.");
@@ -278,6 +282,7 @@ namespace Assignment1
                         // test and set pokemon variables
                         pokemon.Index = values[0];
                         pokemon.Name = values[1];
+                        // LC: good.
                         int.TryParse(values[2], out int hp);
                         pokemon.HP = hp;
                         int.TryParse(values[3], out int atk);

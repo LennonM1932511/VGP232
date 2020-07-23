@@ -44,19 +44,27 @@ namespace Assignment2a
 
         public bool Save(string filename)
         {
-            using (StreamWriter writer = new StreamWriter(filename))
+            try
             {
-                writer.WriteLine("Nat,Pokemon,HP,Atk,Def,SpA,SpD,Spe,Total,TypeI,TypeII");
-
-                // write data
-                for (int i = 0; i < Count; i++)
+                using (StreamWriter writer = new StreamWriter(filename))
                 {
-                    writer.WriteLine(this[i]); // write line
-                }
+                    writer.WriteLine("Nat,Pokemon,HP,Atk,Def,SpA,SpD,Spe,Total,TypeI,TypeII");
 
-                writer.Close();
+                    // write data
+                    for (int i = 0; i < Count; i++)
+                    {
+                        writer.WriteLine(this[i]); // write line
+                    }
+
+                    writer.Close();
+                    return true;
+                }
             }
-            return true;
+            catch (Exception)
+            {
+                Console.WriteLine("An exception occurred attempting to access {0}", filename.ToString());
+                return false;                
+            }
         }
 
         public Pokemon GetHighestDefense()

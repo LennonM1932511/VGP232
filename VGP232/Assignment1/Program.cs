@@ -29,7 +29,7 @@ namespace Assignment1
 
             // The flag to determine if we need to sort the results via name.
             bool sortEnabled = false;
-            
+
             // The column name to be used to determine which sort comparison function to use.
             string sortColumnName = string.Empty;
 
@@ -51,7 +51,7 @@ namespace Assignment1
                     Console.WriteLine("-a or --append : enables append mode when writing to an existing output file (optional)");
 
                     // DONE: help info for sort                    
-                    Console.WriteLine("-s or --sort <column name> : outputs the results sorted by column name");                    
+                    Console.WriteLine("-s or --sort <column name> : outputs the results sorted by column name");
 
                     break;
                 }
@@ -90,8 +90,8 @@ namespace Assignment1
                         // validation to make sure we do have an argument after the flag
                         ++i;
                         // LC: there's some trailing spacing, you can use CTRL + K and CTRL + F to remove it.
-                        sortColumnName = args[i];                        
-                    }                    
+                        sortColumnName = args[i];
+                    }
                 }
                 else if (args[i] == "-c" || args[i] == "--count")
                 {
@@ -129,7 +129,7 @@ namespace Assignment1
                             Console.WriteLine("Output file set to {0}", filePath);
                         }
                     }
-                }                
+                }
                 else
                 {
                     Console.WriteLine("The argument Arg[{0}] = [{1}] is invalid", i, args[i]);
@@ -137,7 +137,7 @@ namespace Assignment1
             }
 
             if (sortEnabled)
-            {              
+            {
                 // LC: good.
                 // determine the column name to trigger a different sort.
                 if (string.IsNullOrEmpty(sortColumnName) || sortColumnName.Equals("index", StringComparison.InvariantCultureIgnoreCase))
@@ -192,16 +192,16 @@ namespace Assignment1
             }
 
             if (results.Count > 0)
-            {                
+            {
                 if (!string.IsNullOrEmpty(outputFile))
-                {                    
+                {
                     FileStream fs;
 
                     // create flag for not writing header in Append mode
                     bool writeHeader = true;
 
                     if (appendToFile && File.Exists((outputFile)))
-                    {                        
+                    {
                         writeHeader = false;
                         fs = File.Open(outputFile, FileMode.Append);
                         Console.WriteLine("Appending to file");
@@ -219,14 +219,14 @@ namespace Assignment1
                         {
                             // LC: excellent to add the header back in.
                             writer.WriteLine("Nat,Pokemon,HP,Atk,Def,SpA,SpD,Spe,Total");
-                        }                        
+                        }
 
                         // write data
                         for (int i = 0; i < results.Count; i++)
-                        {                            
+                        {
                             writer.WriteLine(results[i]); // write line
                         }
-                        
+
                     }
                 }
                 else
@@ -239,9 +239,9 @@ namespace Assignment1
 
                     // the count should be shown after the results
                     if (displayCount)
-                    {                        
+                    {
                         Console.WriteLine("There are {0} entries", results.Count);
-                    }                    
+                    }
                 }
             }
             Console.WriteLine("Done!");
@@ -253,7 +253,7 @@ namespace Assignment1
         /// <param name="fileName">The path to the file</param>
         /// <returns>The list of pokemons</returns>
         public static List<Pokemon> Parse(string fileName)
-        {       
+        {
             List<Pokemon> output = new List<Pokemon>();
 
             using (StreamReader reader = new StreamReader(fileName))

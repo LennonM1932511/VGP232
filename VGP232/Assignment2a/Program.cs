@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 
-// Assignment 1
+// Assignment 2a
 // NAME: Lennon Marshall
 // STUDENT NUMBER: 1932511
-// MARKS: 100/100 Excellent work! Minor issue, there's some trailing spaces in a few of the code blocks, you might want to Format Document i.e. CTRL + K + CTRL + D or F in selection to clean it up.
 
 namespace Assignment2a
 {
@@ -52,23 +51,7 @@ namespace Assignment2a
                         // validation to make sure we do have an argument after the flag
                         ++i;
                         inputFile = args[i];
-
-                        if (string.IsNullOrEmpty(inputFile))
-                        {
-                            // DONE: print no input file specified.
-                            Console.WriteLine("No input file specified.");
-                        }
-                        else if (!File.Exists(inputFile))
-                        {
-                            // DONE: print the file specified does not exist.
-                            Console.WriteLine("The file specified does not exist.");
-                        }
-                        else
-                        {
-                            // This function returns a List<Pokemon> once the data is parsed.                            
-                            Console.WriteLine("Loading data from {0}", inputFile);
-                            results.Load(inputFile);
-                        }
+                        results.Load(inputFile);
                     }
                 }
                 else if (args[i] == "-s" || args[i] == "--sort")
@@ -79,7 +62,6 @@ namespace Assignment2a
                     {
                         // validation to make sure we do have an argument after the flag
                         ++i;
-                        // LC: there's some trailing spacing, you can use CTRL + K and CTRL + F to remove it.
                         sortColumnName = args[i];
                     }
                 }
@@ -102,9 +84,9 @@ namespace Assignment2a
                         // increment the index.
                         ++i;
                         string filePath = args[i];
+
                         if (string.IsNullOrEmpty(filePath))
                         {
-                            // DONE: print No output file specified.
                             Console.WriteLine("No output file specified.");
                         }
                         else
@@ -123,56 +105,7 @@ namespace Assignment2a
 
             if (sortEnabled)
             {
-                // determine the column name to trigger a different sort.
-                if (string.IsNullOrEmpty(sortColumnName) || sortColumnName.Equals("index", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    // Sorts the list based off of the Pokemon index.                    
-                    results.Sort(Pokemon.CompareByIndex);
-                }
-                else if (sortColumnName.Equals("name", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    // Sorts the list based off of the Pokemon name.
-                    results.Sort(Pokemon.CompareByPokemonName);
-                }
-                else if (sortColumnName.Equals("hp", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    // Sorts the list based off of the Pokemon HP.
-                    results.Sort(Pokemon.CompareByPokemonHP);
-                }
-                else if (sortColumnName.Equals("attack", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    // Sorts the list based off of the Pokemon Attack.
-                    results.Sort(Pokemon.CompareByPokemonAttack);
-                }
-                else if (sortColumnName.Equals("defense", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    // Sorts the list based off of the Pokemon Defense.
-                    results.Sort(Pokemon.CompareByPokemonDefense);
-                }
-                else if (sortColumnName.Equals("specialattack", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    // Sorts the list based off of the Pokemon SpecialAttack.
-                    results.Sort(Pokemon.CompareBySpecialAttack);
-                }
-                else if (sortColumnName.Equals("specialdefense", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    // Sorts the list based off of the Pokemon SpecialDefense.
-                    results.Sort(Pokemon.CompareBySpecialDefense);
-                }
-                else if (sortColumnName.Equals("speed", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    // Sorts the list based off of the Pokemon Speed.
-                    results.Sort(Pokemon.CompareByPokemonSpeed);
-                }
-                else if (sortColumnName.Equals("total", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    // Sorts the list based off of the Pokemon Total.
-                    results.Sort(Pokemon.CompareByPokemonTotal);
-                }
-                else
-                {
-                    Console.WriteLine("The column name, [{0}] is invalid", sortColumnName);
-                }
+                results.SortBy(sortColumnName);
             }
 
             if (results.Count > 0)

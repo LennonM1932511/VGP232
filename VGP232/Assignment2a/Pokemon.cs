@@ -11,10 +11,10 @@ namespace Assignment2a
         // LM: Flying, Dark, and Steel were missing from the list in the assignment
         public enum PokemonType
         {
-            Grass, Fire, Water, Bug, Normal, Poison, Electric, Ground, Fairy,
+            None, Grass, Fire, Water, Bug, Normal, Poison, Electric, Ground, Fairy,
             Fighting, Psychic, Rock, Ghost, Ice, Dragon, Flying, Dark, Steel
         }
-        
+
         // Nat,Pokemon,HP,Atk,Def,SpA,SpD,Spe,Total,Type1,Type2
         public string Index { get; set; }
         public string Name { get; set; }
@@ -23,7 +23,7 @@ namespace Assignment2a
         public int Defense { get; set; }
         public int SpecialAttack { get; set; }
         public int SpecialDefense { get; set; }
-        public int Speed { get; set; }        
+        public int Speed { get; set; }
         public int Total { get; set; }
         public PokemonType Type1 { get; set; }
         public PokemonType Type2 { get; set; }
@@ -34,17 +34,18 @@ namespace Assignment2a
             pokemon = new Pokemon();
 
             string[] values = line.Split(',');
-            
+
             if (values.Length != 11)
             {
                 Console.WriteLine("Invalid data struture.");
+                pokemon = null;
                 return false;
             }
             else
             {
                 // test and set pokemon variables
                 pokemon.Index = values[0];
-                pokemon.Name = values[1];                
+                pokemon.Name = values[1];
                 int.TryParse(values[2], out int hp);
                 pokemon.HP = hp;
                 int.TryParse(values[3], out int atk);
@@ -60,31 +61,34 @@ namespace Assignment2a
                 int.TryParse(values[8], out int total);
                 pokemon.Total = total;
 
-                // check if string matches a PokemonType
+                // check if TypeI string matches a PokemonType
                 if (Enum.TryParse(values[9], out PokemonType type1))
                 {
                     pokemon.Type1 = type1;
-                }                
+                }
                 else
                 {
                     Console.WriteLine("Invalid Pokemon TypeI: {0}", values[9]);
+                    pokemon = null;
                     return false;
                 }
-                
+
+                // check if TypeII string matches a PokemonType
                 if (Enum.TryParse(values[10], out PokemonType type2))
                 {
                     pokemon.Type2 = type2;
                 }
                 else if (string.IsNullOrEmpty(values[10]))
                 {
-                    // not sure how to set the PokemonType to null, it defaults to Grass
+                    pokemon.Type2 = 0;
                 }
                 else
                 {
                     Console.WriteLine("Invalid Pokemon TypeII: {0}", values[10]);
+                    pokemon = null;
                     return false;
                 }
-                
+
                 return true;
             }
         }
@@ -139,12 +143,13 @@ namespace Assignment2a
         {
             return left.Total.CompareTo(right.Total);
         }
-       
+
         public override string ToString()
         {
             // construct a string to return with the following format
             // Nat,Pokemon,HP,Atk,Def,SpA,SpD,Spe,Total            
-            return string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10}", Index, Name, HP, Attack, Defense, SpecialAttack, SpecialDefense, Speed, Total, Type1, Type2);
+            return string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10}", Index, Name, HP, Attack, Defense,
+                SpecialAttack, SpecialDefense, Speed, Total, Type1.ToString(), Type2 == PokemonType.None ? "" : Type2.ToString());
         }
     }
 }

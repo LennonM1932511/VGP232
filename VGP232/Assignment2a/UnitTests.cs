@@ -47,66 +47,98 @@ namespace Assignment2a
         public void PokeDex_GetHighestDefense_Pokemon()
         {
             // 213 - Shuckle, Def: 230
+
             Pokemon actual = null;
-            // TODO: uncomment this once you have it implemented.
-            // actual = pokedex.GetHighestDefense();
+            pokedex.Load(inputPath);
+
+            actual = pokedex.GetHighestDefense();
             Assert.AreEqual("213", actual.Index);
             Assert.AreEqual("Shuckle", actual.Name);
-            Assert.AreEqual("230", actual.Defense);
+            Assert.AreEqual(230, actual.Defense);
         }
 
         [Test]
         public void PokeDex_GetHighestHP_Pokemon()
         {
             // 242 - Blissey, HP: 255
-            // TODO: call pokedex.GetHighestHP and confirm the index, name, and hp matches using asserts.
+            Pokemon actual = null;
+            pokedex.Load(inputPath);
+            actual = pokedex.GetHighestHP();
+            Assert.AreEqual("242", actual.Index);
+            Assert.AreEqual("Blissey", actual.Name);
+            Assert.AreEqual(255, actual.HP);
         }
 
         [Test]
         public void PokeDex_GetHighestAttack_Pokemon()
         {
             // 386.1 - Deoxys (A), Atk: 180
-            // TODO: call pokedex.GetHighestAttack and confirm the index, name, and atk matches using asserts.
+            Pokemon actual = null;
+            pokedex.Load(inputPath);
+            actual = pokedex.GetHighestAttack();
+            Assert.AreEqual("386.1", actual.Index);
+            Assert.AreEqual("Deoxys (A)", actual.Name);
+            Assert.AreEqual(180, actual.Attack);
         }
 
         [Test]
         public void PokeDex_GetHighestSpeed_Pokemon()
         {
             // 386.3 - Deoxys (S), Spe: 180
-            // TODO: add test
+            Pokemon actual = null;
+            pokedex.Load(inputPath);
+            actual = pokedex.GetHighestSpeed();
+            Assert.AreEqual("386.3", actual.Index);
+            Assert.AreEqual("Deoxys (S)", actual.Name);
+            Assert.AreEqual(180, actual.Speed);
         }
 
         [Test]
         public void PokeDex_GetHighestSpecialDefense_Pokemon()
         {
             // 213 - Shuckle, SpD: 230
-            // TODO: add test
+            Pokemon actual = null;
+            pokedex.Load(inputPath);
+            actual = pokedex.GetHighestSpecialDefense();
+            Assert.AreEqual("213", actual.Index);
+            Assert.AreEqual("Shuckle", actual.Name);
+            Assert.AreEqual(230, actual.SpecialDefense);
         }
 
         [Test]
         public void PokeDex_FindHighestSpecialAttack_Pokemon()
         {
-            // 386.3 - Deoxys (A), SpA: 180
-            // TODO: add test
+            // 386.1 - Deoxys (A), SpA: 180
+            Pokemon actual = null;
+            pokedex.Load(inputPath);
+            actual = pokedex.GetHighestSpecialAttack();
+            Assert.AreEqual("386.1", actual.Index);
+            Assert.AreEqual("Deoxys (A)", actual.Name);
+            Assert.AreEqual(180, actual.SpecialAttack);
         }
-
 
         [Test]
         public void PokeDex_LoadThatExistAndValid_True()
         {
-            // TODO: expect pokedex with count of 663.
+            pokedex.Load(inputPath);
+            Assert.AreEqual(663, pokedex.Count);
         }
 
         [Test]
         public void PokeDex_LoadThatDoesNotExist_FalseAndEmpty()
         {
             // TODO: load returns false, expect an empty pokeDex
+            Assert.IsFalse(pokedex.Load("fail.csv"));
+            Assert.IsEmpty(pokedex);
         }
 
         [Test]
         public void PokeDex_SaveWithValuesCanLoad_TrueAndNotEmpty()
         {
             // TODO: save returns true, load returns true, and pokedex is not empty.
+            Assert.IsTrue(pokedex.Save(outputPath));
+            Assert.IsTrue(pokedex.Load(inputPath));
+            Assert.IsNotEmpty(pokedex);
         }
 
         [Test]
@@ -123,39 +155,47 @@ namespace Assignment2a
         [Test]
         public void Pokemon_TryParseValidLine_TruePropertiesSet()
         {
-            // TODO: create a pokemon with the stats above set properly
             Pokemon expected = null;
-            // TODO: uncomment this once you added the Type1 and Type2
-            //expected = new Pokemon()
-            //{
-            //    Index = "1",
-            //    Name = "Bulbasaur",
-            //    HP = 45,
-            //    Attack = 49,
-            //    Defense = 49,
-            //    SpecialAttack = 65,
-            //    SpecialDefense = 65,
-            //    Speed = 45,
-            //    Total = 318,
-            //    Type1 = PokemonType.Grass,
-            //    Type2 = PokemonType.Poison
-            //};
+
+            expected = new Pokemon()
+            {
+                Index = "1",
+                Name = "Bulbasaur",
+                HP = 45,
+                Attack = 49,
+                Defense = 49,
+                SpecialAttack = 65,
+                SpecialDefense = 65,
+                Speed = 45,
+                Total = 318,
+                Type1 = Pokemon.PokemonType.Grass,
+                Type2 = Pokemon.PokemonType.Poison
+            };
 
             string line = "1,Bulbasaur,45,49,49,65,65,45,318,Grass,Poison";
             Pokemon actual = null;
 
-            // TODO: uncomment this once you have TryParse implemented.
-            //Assert.IsTrue(Pokemon.TryParse(line, actual));
-            Assert.Equals(expected.Index, actual.Index);
-            Assert.Equals(expected.Name, actual.Name);
-            Assert.Equals(expected.HP, actual.HP);
-            // TODO: check for the rest of the properties, Atk, Def, SpA, SpD, Spe, Total, and Type1 and Type2
+            Assert.IsTrue(Pokemon.TryParse(line, out actual));
+            Assert.AreEqual(expected.Index, actual.Index);
+            Assert.AreEqual(expected.Name, actual.Name);
+            Assert.AreEqual(expected.HP, actual.HP);
+            Assert.AreEqual(expected.Attack, actual.Attack);
+            Assert.AreEqual(expected.Defense, actual.Defense);
+            Assert.AreEqual(expected.SpecialAttack, actual.SpecialAttack);
+            Assert.AreEqual(expected.SpecialDefense, actual.SpecialDefense);
+            Assert.AreEqual(expected.Speed, actual.Speed);
+            Assert.AreEqual(expected.Total, actual.Total);
+            Assert.AreEqual(expected.Type1, actual.Type1);
+            Assert.AreEqual(expected.Type2, actual.Type2);
         }
 
         [Test]
         public void Pokemon_TryParseInvalidLine_FalseNull()
         {
             // TODO: use "1,Bulbasaur,A,B,C,65,65", TryParse returns false, and pokemon is null.
+            string line = "1,Bulbasaur,A,B,C,65,65";
+            Assert.IsFalse(Pokemon.TryParse(line, out Pokemon pokemon));
+            Assert.IsNull(pokemon);
         }
     }
 }

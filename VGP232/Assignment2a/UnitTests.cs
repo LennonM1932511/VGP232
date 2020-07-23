@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 
-namespace Assignment1
+namespace Assignment2a
 {
     [TestFixture]
     public class UnitTests

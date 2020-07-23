@@ -109,7 +109,7 @@ namespace Assignment2a
                         }
                         else
                         {
-                            // DONE: set the output file to the outputFile
+                            // set the output file to filePath
                             outputFile = filePath;
                             Console.WriteLine("Output file set to {0}", filePath);
                         }
@@ -123,7 +123,6 @@ namespace Assignment2a
 
             if (sortEnabled)
             {
-                // LC: good.
                 // determine the column name to trigger a different sort.
                 if (string.IsNullOrEmpty(sortColumnName) || sortColumnName.Equals("index", StringComparison.InvariantCultureIgnoreCase))
                 {

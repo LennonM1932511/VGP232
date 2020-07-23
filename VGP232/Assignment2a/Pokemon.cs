@@ -8,10 +8,11 @@ namespace Assignment2a
 {
     public class Pokemon
     {
+        // LM: Flying, Dark, and Steel were missing from the list in the assignment
         public enum PokemonType
         {
-            Grass, Fire, Water, Bug, Normal, Poison, Electric, Ground,
-            Fairy, Fighting, Psychic, Rock, Ghost, Ice, Dragon
+            Grass, Fire, Water, Bug, Normal, Poison, Electric, Ground, Fairy,
+            Fighting, Psychic, Rock, Ghost, Ice, Dragon, Flying, Dark, Steel
         }
         
         // Nat,Pokemon,HP,Atk,Def,SpA,SpD,Spe,Total,Type1,Type2
@@ -58,8 +59,32 @@ namespace Assignment2a
                 pokemon.Speed = spe;
                 int.TryParse(values[8], out int total);
                 pokemon.Total = total;
-                //pokemon.Type1 = 
 
+                // check if string matches a PokemonType
+                if (Enum.TryParse(values[9], out PokemonType type1))
+                {
+                    pokemon.Type1 = type1;
+                }                
+                else
+                {
+                    Console.WriteLine("Invalid Pokemon TypeI: {0}", values[9]);
+                    return false;
+                }
+                
+                if (Enum.TryParse(values[10], out PokemonType type2))
+                {
+                    pokemon.Type2 = type2;
+                }
+                else if (string.IsNullOrEmpty(values[10]))
+                {
+                    // not sure how to set the PokemonType to null, it defaults to Grass
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Pokemon TypeII: {0}", values[10]);
+                    return false;
+                }
+                
                 return true;
             }
         }
@@ -114,16 +139,12 @@ namespace Assignment2a
         {
             return left.Total.CompareTo(right.Total);
         }
-
-        /// <summary>
-        /// The Pokemon string with all the properties
-        /// </summary>
-        /// <returns>The pokemon formated string</returns>
+       
         public override string ToString()
         {
             // construct a string to return with the following format
-            // Nat,Pokemon,HP,Atk,Def,SpA,SpD,Spe,Total
-            return String.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8}", Index, Name, HP, Attack, Defense, SpecialAttack, SpecialDefense, Speed, Total);
+            // Nat,Pokemon,HP,Atk,Def,SpA,SpD,Spe,Total            
+            return string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10}", Index, Name, HP, Attack, Defense, SpecialAttack, SpecialDefense, Speed, Total, Type1, Type2);
         }
     }
 }

@@ -30,28 +30,17 @@ namespace Assignment2a
 
         public bool Save(string filename)
         {
-            FileStream fs;
-
-            // create flag for not writing header in Append mode
-            bool writeHeader = true;
-            fs = File.Open(filename, FileMode.Create);
-
-
             using (StreamWriter writer = new StreamWriter(filename))
             {
-                // write data header if creating new file
-                if (writeHeader)
-                {
-                    // LC: excellent to add the header back in.
-                    writer.WriteLine("Nat,Pokemon,HP,Atk,Def,SpA,SpD,Spe,Total");
-                }
+                writer.WriteLine("Nat,Pokemon,HP,Atk,Def,SpA,SpD,Spe,Total,TypeI,TypeII");               
 
                 // write data
-                //for (int i = 0; i < results.Count; i++)
-                //{
-                //    writer.WriteLine(results[i]); // write line
-                //}
+                for (int i = 0; i < Count; i++)
+                {
+                    writer.WriteLine(this[i]); // write line
+                }
 
+                writer.Close();
             }
             return true;
         }

@@ -31,66 +31,49 @@ namespace Assignment2a
 
         public static bool TryParse(string line, out Pokemon pokemon)
         {
-            pokemon = new Pokemon();
-
+            bool success = false;
+            pokemon = null;
             string[] values = line.Split(',');
 
-            if (values.Length != 11)
+            try
             {
-                Console.WriteLine("Invalid data struture.");
-                pokemon = null;
-                return false;
-            }
-            else
-            {
+                Pokemon temp = new Pokemon();
+
                 // test and set pokemon variables
-                pokemon.Index = values[0];
-                pokemon.Name = values[1];
+                temp.Index = values[0];
+                temp.Name = values[1];
                 int.TryParse(values[2], out int hp);
-                pokemon.HP = hp;
+                temp.HP = hp;
                 int.TryParse(values[3], out int atk);
-                pokemon.Attack = atk;
+                temp.Attack = atk;
                 int.TryParse(values[4], out int def);
-                pokemon.Defense = def;
+                temp.Defense = def;
                 int.TryParse(values[5], out int spa);
-                pokemon.SpecialAttack = spa;
+                temp.SpecialAttack = spa;
                 int.TryParse(values[6], out int spd);
-                pokemon.SpecialDefense = spd;
+                temp.SpecialDefense = spd;
                 int.TryParse(values[7], out int spe);
-                pokemon.Speed = spe;
+                temp.Speed = spe;
                 int.TryParse(values[8], out int total);
-                pokemon.Total = total;
+                temp.Total = total;
 
                 // check if TypeI string matches a PokemonType
-                if (Enum.TryParse(values[9], out PokemonType type1))
-                {
-                    pokemon.Type1 = type1;
-                }
-                else
-                {
-                    Console.WriteLine("Invalid Pokemon TypeI: {0}", values[9]);
-                    pokemon = null;
-                    return false;
-                }
+                Enum.TryParse(values[9], out PokemonType type1);
+                temp.Type1 = type1;
 
                 // check if TypeII string matches a PokemonType
-                if (Enum.TryParse(values[10], out PokemonType type2))
-                {
-                    pokemon.Type2 = type2;
-                }
-                else if (string.IsNullOrEmpty(values[10]))
-                {
-                    pokemon.Type2 = 0;
-                }
-                else
-                {
-                    Console.WriteLine("Invalid Pokemon TypeII: {0}", values[10]);
-                    pokemon = null;
-                    return false;
-                }
+                Enum.TryParse(values[10], out PokemonType type2);
+                temp.Type2 = type2;
 
-                return true;
+                pokemon = temp;
+                success = true;
             }
+            catch (Exception)
+            {
+                Console.WriteLine("Parsing Data Failed");
+            }
+
+            return success;
         }
 
         /// <summary>

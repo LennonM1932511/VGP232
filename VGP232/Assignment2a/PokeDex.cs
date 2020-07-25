@@ -63,7 +63,7 @@ namespace Assignment2a
             catch (Exception)
             {
                 Console.WriteLine("An exception occurred attempting to access {0}", filename.ToString());
-                return false;                
+                return false;
             }
         }
 
@@ -116,6 +116,7 @@ namespace Assignment2a
             return this[Count - 1];
         }
 
+        // LC: good.
         List<Pokemon> GetAllPokemonOfType(Pokemon.PokemonType type)
         {
             // create list to save pokemon of same type

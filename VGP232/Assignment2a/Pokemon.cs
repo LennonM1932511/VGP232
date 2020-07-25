@@ -130,7 +130,8 @@ namespace Assignment2a
         public override string ToString()
         {
             // construct a string to return with the following format
-            // Nat,Pokemon,HP,Atk,Def,SpA,SpD,Spe,Total            
+            // Nat,Pokemon,HP,Atk,Def,SpA,SpD,Spe,Total
+            // LC: good.
             return string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10}", Index, Name, HP, Attack, Defense,
                 SpecialAttack, SpecialDefense, Speed, Total, Type1.ToString(), Type2 == PokemonType.None ? "" : Type2.ToString());
         }

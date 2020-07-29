@@ -8,7 +8,6 @@ namespace Assignment2b
 {
     public class Pokemon
     {
-        // LM: Flying, Dark, and Steel were missing from the list in the assignment
         public enum PokemonType
         {
             None, Grass, Fire, Water, Bug, Normal, Poison, Electric, Ground, Fairy,
@@ -131,7 +130,6 @@ namespace Assignment2b
         {
             // construct a string to return with the following format
             // Nat,Pokemon,HP,Atk,Def,SpA,SpD,Spe,Total
-            // LC: good.
             return string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10}", Index, Name, HP, Attack, Defense,
                 SpecialAttack, SpecialDefense, Speed, Total, Type1.ToString(), Type2 == PokemonType.None ? "" : Type2.ToString());
         }

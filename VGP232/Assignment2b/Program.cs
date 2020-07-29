@@ -7,7 +7,7 @@ using System.IO;
 // STUDENT NUMBER: 1932511
 // MARKS: 100/100 Excellent work. All tests passed. 1 PokeDex test missing the return value check.
 
-namespace Assignment2a
+namespace Assignment2b
 {
     class MainClass
     {
@@ -52,6 +52,7 @@ namespace Assignment2a
                         // validation to make sure we do have an argument after the flag
                         ++i;
                         inputFile = args[i];
+                        // LC: good.
                         results.Load(inputFile);
                     }
                 }
@@ -106,6 +107,7 @@ namespace Assignment2a
 
             if (sortEnabled)
             {
+                // LC: good.
                 results.SortBy(sortColumnName);
             }
 
@@ -113,6 +115,7 @@ namespace Assignment2a
             {
                 if (!string.IsNullOrEmpty(outputFile))
                 {
+                    // LC: good.
                     results.Save(outputFile);
                 }
                 else

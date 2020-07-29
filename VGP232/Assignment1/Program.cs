@@ -89,7 +89,6 @@ namespace Assignment1
                     {
                         // validation to make sure we do have an argument after the flag
                         ++i;
-                        // LC: there's some trailing spacing, you can use CTRL + K and CTRL + F to remove it.
                         sortColumnName = args[i];
                     }
                 }
@@ -138,7 +137,6 @@ namespace Assignment1
 
             if (sortEnabled)
             {
-                // LC: good.
                 // determine the column name to trigger a different sort.
                 if (string.IsNullOrEmpty(sortColumnName) || sortColumnName.Equals("index", StringComparison.InvariantCultureIgnoreCase))
                 {

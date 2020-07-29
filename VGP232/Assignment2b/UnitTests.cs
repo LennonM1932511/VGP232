@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 
-namespace Assignment2a
+namespace Assignment2b
 {
     [TestFixture]
     public class UnitTests
@@ -120,7 +120,9 @@ namespace Assignment2a
         [Test]
         public void PokeDex_LoadThatExistAndValid_True()
         {
-            Assert.IsTrue(pokedex.Load(inputPath));            
+            // LC: also check that the return value is true.
+            //bool test = pokedex.Load(inputPath);
+            Assert.IsTrue(pokedex.Load(inputPath));
             Assert.AreEqual(663, pokedex.Count);
         }
 
@@ -192,6 +194,7 @@ namespace Assignment2a
         [Test]
         public void Pokemon_TryParseInvalidLine_FalseNull()
         {
+            // LC: good.
             // TODO: use "1,Bulbasaur,A,B,C,65,65", TryParse returns false, and pokemon is null.
             string line = "1,Bulbasaur,A,B,C,65,65";
             Assert.IsFalse(Pokemon.TryParse(line, out Pokemon pokemon));

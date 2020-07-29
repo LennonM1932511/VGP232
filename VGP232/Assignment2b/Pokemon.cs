@@ -4,11 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assignment1
+namespace Assignment2b
 {
     public class Pokemon
     {
-        // Nat,Pokemon,HP,Atk,Def,SpA,SpD,Spe,Total
+        // LM: Flying, Dark, and Steel were missing from the list in the assignment
+        public enum PokemonType
+        {
+            None, Grass, Fire, Water, Bug, Normal, Poison, Electric, Ground, Fairy,
+            Fighting, Psychic, Rock, Ghost, Ice, Dragon, Flying, Dark, Steel
+        }
+
+        // Nat,Pokemon,HP,Atk,Def,SpA,SpD,Spe,Total,Type1,Type2
         public string Index { get; set; }
         public string Name { get; set; }
         public int HP { get; set; }
@@ -18,6 +25,56 @@ namespace Assignment1
         public int SpecialDefense { get; set; }
         public int Speed { get; set; }
         public int Total { get; set; }
+        public PokemonType Type1 { get; set; }
+        public PokemonType Type2 { get; set; }
+
+
+        public static bool TryParse(string line, out Pokemon pokemon)
+        {
+            bool success = false;
+            pokemon = null;
+            string[] values = line.Split(',');
+
+            try
+            {
+                Pokemon temp = new Pokemon();
+
+                // test and set pokemon variables
+                temp.Index = values[0];
+                temp.Name = values[1];
+                int.TryParse(values[2], out int hp);
+                temp.HP = hp;
+                int.TryParse(values[3], out int atk);
+                temp.Attack = atk;
+                int.TryParse(values[4], out int def);
+                temp.Defense = def;
+                int.TryParse(values[5], out int spa);
+                temp.SpecialAttack = spa;
+                int.TryParse(values[6], out int spd);
+                temp.SpecialDefense = spd;
+                int.TryParse(values[7], out int spe);
+                temp.Speed = spe;
+                int.TryParse(values[8], out int total);
+                temp.Total = total;
+
+                // check if TypeI string matches a PokemonType
+                Enum.TryParse(values[9], out PokemonType type1);
+                temp.Type1 = type1;
+
+                // check if TypeII string matches a PokemonType
+                Enum.TryParse(values[10], out PokemonType type2);
+                temp.Type2 = type2;
+
+                pokemon = temp;
+                success = true;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Parsing Data Failed");
+            }
+
+            return success;
+        }
 
         /// <summary>
         /// The Comparator function to check for name
@@ -70,15 +127,13 @@ namespace Assignment1
             return left.Total.CompareTo(right.Total);
         }
 
-        /// <summary>
-        /// The Pokemon string with all the properties
-        /// </summary>
-        /// <returns>The pokemon formated string</returns>
         public override string ToString()
         {
             // construct a string to return with the following format
             // Nat,Pokemon,HP,Atk,Def,SpA,SpD,Spe,Total
-            return String.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8}", Index, Name, HP, Attack, Defense, SpecialAttack, SpecialDefense, Speed, Total);
-        }        
+            // LC: good.
+            return string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10}", Index, Name, HP, Attack, Defense,
+                SpecialAttack, SpecialDefense, Speed, Total, Type1.ToString(), Type2 == PokemonType.None ? "" : Type2.ToString());
+        }
     }
 }

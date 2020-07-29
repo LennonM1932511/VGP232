@@ -50,7 +50,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICsvSerializable.cs" />
+    <Compile Include="IJsonSerializable.cs" />
     <Compile Include="IPeristence.cs" />
+    <Compile Include="IXmlSerializable.cs" />
     <Compile Include="PokeDex.cs" />
     <Compile Include="Pokemon.cs" />
     <Compile Include="Program.cs" />

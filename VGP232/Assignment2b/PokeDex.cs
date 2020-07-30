@@ -20,7 +20,9 @@ namespace Assignment2b
 
         public bool Load(string fileName)
         {
-            bool success = false;
+            Clear();
+            bool success = false;            
+
             if (string.IsNullOrEmpty(fileName))
             {
                 Console.WriteLine("No input file specified.");
@@ -208,6 +210,7 @@ namespace Assignment2b
 
         public bool LoadXML(string path)
         {
+            Clear();
             bool success = false;
             try
             {
@@ -249,6 +252,7 @@ namespace Assignment2b
 
         public bool LoadJSON(string path)
         {
+            Clear();
             bool success = false;
             try
             {
@@ -293,6 +297,7 @@ namespace Assignment2b
 
         public bool LoadCSV(string path)
         {
+            Clear();
             using (StreamReader reader = new StreamReader(path))
             {
                 // Skip the first line because header does not need to be parsed.                

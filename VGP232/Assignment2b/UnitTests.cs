@@ -35,10 +35,34 @@ namespace Assignment2b
         [TearDown]
         public void CleanUp()
         {
-            // We remove the output file after we are done.
+            // We remove the output files after we are done.
             if (File.Exists(outputPath))
             {
                 File.Delete(outputPath);
+            }
+            if (File.Exists("pokemons.csv"))
+            {
+                File.Delete("pokemons.csv");
+            }
+            if (File.Exists("pokemons.json"))
+            {
+                File.Delete("pokemons.json");
+            }
+            if (File.Exists("pokemons.xml"))
+            {
+                File.Delete("pokemons.xml");
+            }
+            if (File.Exists("empty.json"))
+            {
+                File.Delete("empty.json");
+            }
+            if (File.Exists("empty.csv"))
+            {
+                File.Delete("empty.csv");
+            }
+            if (File.Exists("empty.xml"))
+            {
+                File.Delete("empty.xml");
             }
         }
 
@@ -199,55 +223,167 @@ namespace Assignment2b
             Assert.IsNull(pokemon);
         }
 
-        /*
-        Test LoadJson Valid
-            1. PokeDex_Load_Save_Load_ValidJson - Load the data2.csv and Save() it to
-            pokemons.json and call Load() output and validate that there’s 663 entries
-            2. PokeDex_Load_SaveAsJSON_Load_ValidJson - Load the data2.csv and
-            SaveAsJSON() it to pokemons.json and call Load() output and validate that there’s 663
-            entries
-            3. PokeDex_Load_SaveAsJSON_LoadJSON_ValidJson - Load the data2.csv and
-            SaveAsJSON() it to pokemons.json and call LoadJSON() on output and validate that
-            there’s 663 entries
-            4. PokeDex_Load_Save_LoadJSON_ValidJson - Load the data2.csv and Save() it to
-            pokemons.json and call LoadJSON() on output and validate that there’s 663 entries
-        Test LoadCsv Valid
-            1. PokeDex_Load_Save_Load_ValidCsv - Load the data2.csv and Save() it to
-            pokemons.csv and Load() output and validate that there’s 663 entries
-            2. PokeDex_Load_SaveAsCSV_LoadCSV_ValidCsv - Load the data2.csv and
-            SaveAsCSV() it to pokemons.csv and LoadCsv() output and validate that there’s 663
-            entries
-        Test LoadXML Valid
-            1. PokeDex_Load_Save_Load_ValidXml - Load the data2.csv and Save() it to
-            pokemons.xml and Load() output and validate that there’s 663 entries
-            2. PokeDex_Load_SaveAsXML_LoadXML_ValidXml - Load the data2.csv and
-            SaveAsXML() it to pokemons.xml and LoadXML() output and validate that there’s 663
-            entries
-        Test SaveAsJSON Empty
-            1. PokeDex_SaveEmpty_Load_ValidJson - Create an empty PokeDex, call
-            SaveAsJSON() to empty.json, and Load() the output and verify the pokedex has a
-            Count of 0
-        Test SaveAsCSV Empty        
-            1. PokeDex_SaveEmpty_Load_ValidCsv - Create an empty PokeDex, call
-            SaveAsCSV() to empty.csv, and Load() the output and verify the pokedex has a Count
-            of 0
-        Test SaveAsXML Empty
-            1. PokeDex_SaveEmpty_Load_ValidXml - Create an empty PokeDex, call
-            SaveAsCSV() to empty.csv, and Load and verify the pokedex has a Count of 0
-        Test Load InvalidFormat
-            1. PokeDex_Load_SaveJSON_LoadXML_InvalidXml - Load the data2.csv and
-            SaveAsJSON() it to pokemons.json and call LoadXML() output and validate that it
-            returns false, and there’s 0 entries
-            2. PokeDex_Load_SaveXML_LoadJSON_InvalidJson - Load the data2.csv and
-            SaveAsXML() it to pokemons.xml and call LoadJSON() output and validate that it
-            returns false, and there’s 0 entries
-            3. PokeDex_ValidCsv_LoadXML_InvalidXml - LoadXML() on the data2.csv and validate
-            that returns false, and there’s 0 entries
-            4. PokeDex_ValidCsv_LoadJSON_InvalidJson - LoadJSON() on the data2.csv and
-            validate that Load returns false, and there’s 0 entries
-        
-        Note: the [TearDown] should delete the output files i.e. pokemons.csv, pokemons.json,
-        pokemons.xml, empty.json, empty.csv, and empty.xml.
-         */
+        // Test LoadJSON Valid
+        [Test]
+        public void PokeDex_Load_Save_Load_ValidJson()
+        {
+            // Load the data2.csv and Save() it to
+            // pokemons.json and call Load() output and validate that there’s 663 entries
+            pokedex.Load(inputPath);
+            pokedex.Save("pokemons.json");
+            pokedex.Load("pokemons.json");
+            Assert.AreEqual(663, pokedex.Count);
+        }
+
+        [Test]
+        public void PokeDex_Load_SaveAsJSON_Load_ValidJson()
+        {
+            // Load the data2.csv and SaveAsJSON() it to pokemons.json and call 
+            // Load() output and validate that there’s 663 entries
+            pokedex.Load(inputPath);
+            pokedex.SaveAsJSON("pokemons.json");
+            pokedex.Load("pokemons.json");
+            Assert.AreEqual(663, pokedex.Count);
+        }
+
+        [Test]
+        public void PokeDex_Load_SaveAsJSON_LoadJSON_ValidJson()
+        {
+            // Load the data2.csv and SaveAsJSON() it to pokemons.json and call
+            // LoadJSON() on output and validate that there’s 663 entries
+            pokedex.Load(inputPath);
+            pokedex.SaveAsJSON("pokemons.json");
+            pokedex.LoadJSON("pokemons.json");
+            Assert.AreEqual(663, pokedex.Count);
+        }
+
+        [Test]
+        public void PokeDex_Load_Save_LoadJSON_ValidJson()
+        {
+            // Load the data2.csv and Save() it to pokemons.json and call 
+            // LoadJSON() on output and validate that there’s 663 entries
+            pokedex.Load(inputPath);
+            pokedex.Save("pokemons.json");
+            pokedex.LoadJSON("pokemons.json");
+            Assert.AreEqual(663, pokedex.Count);
+        }
+
+        // Test LoadCsv Valid
+        [Test]
+        public void PokeDex_Load_Save_Load_ValidCsv()
+        {
+            // Load the data2.csv and Save() it to pokemons.csv and Load() 
+            // output and validate that there’s 663 entries
+            pokedex.Load(inputPath);
+            pokedex.Save("pokemons.csv");
+            pokedex.Load("pokemons.csv");
+            Assert.AreEqual(663, pokedex.Count);
+        }
+
+        [Test]
+        public void PokeDex_Load_SaveAsCSV_LoadCSV_ValidCsv()
+        {
+            // Load the data2.csv and SaveAsCSV() it to pokemons.csv and 
+            // LoadCsv() output and validate that there’s 663 entries
+            pokedex.Load(inputPath);
+            pokedex.SaveAsCSV("pokemons.csv");
+            pokedex.LoadCSV("pokemons.csv");
+            Assert.AreEqual(663, pokedex.Count);
+        }
+
+        // Test LoadXML Valid
+        [Test]
+        public void PokeDex_Load_Save_Load_ValidXml()
+        {
+            // Load the data2.csv and Save() it to pokemons.xml and Load() output 
+            // and validate that there’s 663 entries
+            pokedex.Load(inputPath);
+            pokedex.Save("pokemons.xml");
+            pokedex.Load("pokemons.xml");
+            Assert.AreEqual(663, pokedex.Count);
+        }
+
+        [Test]
+        public void PokeDex_Load_SaveAsXML_LoadXML_ValidXml()
+        {
+            // Load the data2.csv and SaveAsXML() it to pokemons.xml and LoadXML() 
+            // output and validate that there’s 663 entries
+            pokedex.Load(inputPath);
+            pokedex.SaveAsXML("pokemons.xml");
+            pokedex.LoadXML("pokemons.xml");
+            Assert.AreEqual(663, pokedex.Count);
+        }
+
+        // Test SaveAsJSON Empty
+        [Test]
+        public void PokeDex_SaveEmpty_Load_ValidJson()
+        {
+            // Create an empty PokeDex, call SaveAsJSON() to empty.json, and Load() 
+            // the output and verify the pokedex has a Count of 0
+            pokedex.SaveAsJSON("empty.json");
+            pokedex.Load("empty.json");
+            Assert.AreEqual(0, pokedex.Count);
+        }
+
+        // Test SaveAsCSV Empty
+        [Test]
+        public void PokeDex_SaveEmpty_Load_ValidCsv()
+        {
+            // Create an empty PokeDex, call SaveAsCSV() to empty.csv, and Load() the 
+            // output and verify the pokedex has a Count of 0
+            pokedex.SaveAsCSV("empty.csv");
+            pokedex.Load("empty.csv");
+            Assert.AreEqual(0, pokedex.Count);
+        }
+
+        // Test SaveAsXML Empty
+        [Test]
+        public void PokeDex_SaveEmpty_Load_ValidXml()
+        {
+            // Create an empty PokeDex, call SaveAsCSV() to empty.csv, and Load and 
+            // verify the pokedex has a Count of 0
+            pokedex.SaveAsXML("empty.xml");
+            pokedex.Load("empty.xml");
+            Assert.AreEqual(0, pokedex.Count);
+        }
+
+        // Test Load InvalidFormat
+        [Test]
+        public void PokeDex_Load_SaveJSON_LoadXML_InvalidXml()
+        {
+            // Load the data2.csv and SaveAsJSON() it to pokemons.json and call 
+            // LoadXML() output and validate that it returns false, and there’s 0 entries
+            pokedex.Load(inputPath);
+            pokedex.SaveAsJSON("pokemons.json");
+            Assert.IsFalse(pokedex.LoadXML("pokemons.json"));
+            Assert.AreEqual(0, pokedex.Count);
+        }
+
+        [Test]
+        public void PokeDex_Load_SaveXML_LoadJSON_InvalidJson()
+        {
+            // Load the data2.csv and SaveAsXML() it to pokemons.xml and call LoadJSON() 
+            // output and validate that it returns false, and there’s 0 entries
+            pokedex.Load(inputPath);
+            pokedex.SaveAsXML("pokemons.xml");
+            Assert.IsFalse(pokedex.LoadJSON("pokemons.xml"));
+            Assert.AreEqual(0, pokedex.Count);
+        }
+
+        [Test]
+        public void PokeDex_ValidCsv_LoadXML_InvalidXml()
+        {
+            // LoadXML() on the data2.csv and validate that returns false, and there’s 0 entries
+            Assert.IsFalse(pokedex.LoadXML(inputPath));
+            Assert.AreEqual(0, pokedex.Count);
+        }
+
+        [Test]
+        public void PokeDex_ValidCsv_LoadJSON_InvalidJson()
+        {
+            // LoadJSON() on the data2.csv and validate that Load returns false, and there’s 0 entries
+            Assert.IsFalse(pokedex.LoadJSON(inputPath));
+            Assert.AreEqual(0, pokedex.Count);
+        }       
     }
 }

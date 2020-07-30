@@ -21,7 +21,7 @@ namespace Assignment2b
         public bool Load(string fileName)
         {
             Clear();
-            bool success = false;            
+            bool success = false;
 
             if (string.IsNullOrEmpty(fileName))
             {

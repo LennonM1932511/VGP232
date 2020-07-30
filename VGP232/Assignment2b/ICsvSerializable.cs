@@ -10,5 +10,5 @@ namespace Assignment2b
     {
         bool LoadCSV(string path);
         bool SaveAsCSV(string path);
-    }    
+    }
 }

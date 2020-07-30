@@ -384,6 +384,6 @@ namespace Assignment2b
             // LoadJSON() on the data2.csv and validate that Load returns false, and there’s 0 entries
             Assert.IsFalse(pokedex.LoadJSON(inputPath));
             Assert.AreEqual(0, pokedex.Count);
-        }       
+        }
     }
 }

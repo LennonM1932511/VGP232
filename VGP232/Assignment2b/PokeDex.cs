@@ -71,11 +71,11 @@ namespace Assignment2b
             }
             else if (fileExt.Equals(".xml", StringComparison.InvariantCultureIgnoreCase))
             {
-                success = SaveAsXML(fileName);                
+                success = SaveAsXML(fileName);
             }
             else if (fileExt.Equals(".json", StringComparison.InvariantCultureIgnoreCase))
             {
-                success = SaveAsJSON(fileName);                
+                success = SaveAsJSON(fileName);
             }
             else
             {

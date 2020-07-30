@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assignment2b
 {
+    [Serializable]
     public class Pokemon
     {
         public enum PokemonType
@@ -27,6 +28,9 @@ namespace Assignment2b
         public PokemonType Type1 { get; set; }
         public PokemonType Type2 { get; set; }
 
+        public Pokemon()
+        {
+        }
 
         public static bool TryParse(string line, out Pokemon pokemon)
         {

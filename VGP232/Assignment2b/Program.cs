@@ -93,7 +93,6 @@ namespace Assignment2b
                         {
                             // set the output file to filePath
                             outputFile = filePath;
-                            Console.WriteLine("Output file set to {0}", filePath);
                         }
                     }
                 }

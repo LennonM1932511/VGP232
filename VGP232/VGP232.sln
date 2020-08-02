@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment2b", "Assignment2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week4-2", "Week4-2\Week4-2.csproj", "{574C6F90-BF6B-42DB-9E84-EBBB49CE75C3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonLib", "PokemonLib\PokemonLib.csproj", "{519DF71C-D00E-4561-89C8-362AEA05081E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment2c", "Assignment2c\Assignment2c.csproj", "{3BF54F28-3785-4060-8063-27B3D6B3939A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{574C6F90-BF6B-42DB-9E84-EBBB49CE75C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{574C6F90-BF6B-42DB-9E84-EBBB49CE75C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{574C6F90-BF6B-42DB-9E84-EBBB49CE75C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{519DF71C-D00E-4561-89C8-362AEA05081E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{519DF71C-D00E-4561-89C8-362AEA05081E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{519DF71C-D00E-4561-89C8-362AEA05081E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{519DF71C-D00E-4561-89C8-362AEA05081E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BF54F28-3785-4060-8063-27B3D6B3939A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BF54F28-3785-4060-8063-27B3D6B3939A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BF54F28-3785-4060-8063-27B3D6B3939A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BF54F28-3785-4060-8063-27B3D6B3939A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

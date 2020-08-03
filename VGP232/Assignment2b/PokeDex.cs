@@ -36,7 +36,7 @@ namespace Assignment2b
                 Console.WriteLine("Loading PokeDex from {0}", fileName);
 
                 string fileExt = Path.GetExtension(fileName);
-
+                // LC: good.
                 // check for compatible file type and load file
                 if (fileExt.Equals(".csv", StringComparison.InvariantCultureIgnoreCase))
                 {
@@ -65,6 +65,7 @@ namespace Assignment2b
             Console.WriteLine("Saving PokeDex to {0}", fileName);
 
             string fileExt = Path.GetExtension(fileName);
+            // LC: good.
 
             // check for compatible file type and save file
             if (fileExt.Equals(".csv", StringComparison.InvariantCultureIgnoreCase))
@@ -159,7 +160,7 @@ namespace Assignment2b
             // determine the column name to trigger a different sort.
             if (string.IsNullOrEmpty(columnName) || columnName.Equals("index", StringComparison.InvariantCultureIgnoreCase))
             {
-                // Sorts the list based off of the Pokemon index.                    
+                // Sorts the list based off of the Pokemon index.
                 Sort(Pokemon.CompareByIndex);
             }
             else if (columnName.Equals("name", StringComparison.InvariantCultureIgnoreCase))

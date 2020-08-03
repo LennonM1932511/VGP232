@@ -230,7 +230,9 @@ namespace Assignment2b
             // Load the data2.csv and Save() it to
             // pokemons.json and call Load() output and validate that there’s 663 entries
             pokedex.Load(inputPath);
+            // LC: should also Assert that this returns true
             pokedex.Save("pokemons.json");
+            // LC: should also Assert that this returns true
             pokedex.Load("pokemons.json");
             Assert.AreEqual(663, pokedex.Count);
         }
@@ -241,7 +243,9 @@ namespace Assignment2b
             // Load the data2.csv and SaveAsJSON() it to pokemons.json and call 
             // Load() output and validate that there’s 663 entries
             pokedex.Load(inputPath);
+            // LC: should also Assert that this returns true
             pokedex.SaveAsJSON("pokemons.json");
+            // LC: should also Assert that this returns true
             pokedex.Load("pokemons.json");
             Assert.AreEqual(663, pokedex.Count);
         }
@@ -252,7 +256,9 @@ namespace Assignment2b
             // Load the data2.csv and SaveAsJSON() it to pokemons.json and call
             // LoadJSON() on output and validate that there’s 663 entries
             pokedex.Load(inputPath);
+            // LC: should also Assert that this returns true
             pokedex.SaveAsJSON("pokemons.json");
+            // LC: should also Assert that this returns true
             pokedex.LoadJSON("pokemons.json");
             Assert.AreEqual(663, pokedex.Count);
         }
@@ -263,7 +269,9 @@ namespace Assignment2b
             // Load the data2.csv and Save() it to pokemons.json and call 
             // LoadJSON() on output and validate that there’s 663 entries
             pokedex.Load(inputPath);
+            // LC: should also Assert that this returns true
             pokedex.Save("pokemons.json");
+            // LC: should also Assert that this returns true
             pokedex.LoadJSON("pokemons.json");
             Assert.AreEqual(663, pokedex.Count);
         }
@@ -275,7 +283,9 @@ namespace Assignment2b
             // Load the data2.csv and Save() it to pokemons.csv and Load() 
             // output and validate that there’s 663 entries
             pokedex.Load(inputPath);
+            // LC: should also Assert that this returns true
             pokedex.Save("pokemons.csv");
+            // LC: should also Assert that this returns true
             pokedex.Load("pokemons.csv");
             Assert.AreEqual(663, pokedex.Count);
         }
@@ -286,7 +296,9 @@ namespace Assignment2b
             // Load the data2.csv and SaveAsCSV() it to pokemons.csv and 
             // LoadCsv() output and validate that there’s 663 entries
             pokedex.Load(inputPath);
+            // LC: should also Assert that this returns true
             pokedex.SaveAsCSV("pokemons.csv");
+            // LC: should also Assert that this returns true
             pokedex.LoadCSV("pokemons.csv");
             Assert.AreEqual(663, pokedex.Count);
         }
@@ -298,7 +310,9 @@ namespace Assignment2b
             // Load the data2.csv and Save() it to pokemons.xml and Load() output 
             // and validate that there’s 663 entries
             pokedex.Load(inputPath);
+            // LC: should also Assert that this returns true
             pokedex.Save("pokemons.xml");
+            // LC: should also Assert that this returns true
             pokedex.Load("pokemons.xml");
             Assert.AreEqual(663, pokedex.Count);
         }
@@ -310,6 +324,7 @@ namespace Assignment2b
             // output and validate that there’s 663 entries
             pokedex.Load(inputPath);
             pokedex.SaveAsXML("pokemons.xml");
+            // LC: should also Assert that this returns true
             pokedex.LoadXML("pokemons.xml");
             Assert.AreEqual(663, pokedex.Count);
         }
@@ -321,6 +336,7 @@ namespace Assignment2b
             // Create an empty PokeDex, call SaveAsJSON() to empty.json, and Load() 
             // the output and verify the pokedex has a Count of 0
             pokedex.SaveAsJSON("empty.json");
+            // LC: should also Assert that this returns true
             pokedex.Load("empty.json");
             Assert.AreEqual(0, pokedex.Count);
         }
@@ -332,6 +348,7 @@ namespace Assignment2b
             // Create an empty PokeDex, call SaveAsCSV() to empty.csv, and Load() the 
             // output and verify the pokedex has a Count of 0
             pokedex.SaveAsCSV("empty.csv");
+            // LC: should also Assert that this returns true
             pokedex.Load("empty.csv");
             Assert.AreEqual(0, pokedex.Count);
         }
@@ -343,6 +360,7 @@ namespace Assignment2b
             // Create an empty PokeDex, call SaveAsCSV() to empty.csv, and Load and 
             // verify the pokedex has a Count of 0
             pokedex.SaveAsXML("empty.xml");
+            // LC: should also Assert that this returns true
             pokedex.Load("empty.xml");
             Assert.AreEqual(0, pokedex.Count);
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,53 @@ namespace Assignment2c
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void OpenPokedexButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Title = "OPEN POKéDEX";
+            openFile.Filter = "POKéDEX Files|*.csv;*.xml;*.json";
+            openFile.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            if (openFile.ShowDialog() == true)
+            {
+                MessageBox.Show(openFile.FileName);
+                string[] properName = openFile.SafeFileName.Split('.');
+                PokedexNameLabel.Text = properName[0];
+            }
+        }
+
+        private void SavePokedexButton_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFile = new SaveFileDialog();
+            saveFile.Title = "SAVE POKéDEX";
+            saveFile.Filter = "POKéDEX Files|*.csv;*.xml;*.json";
+            saveFile.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            if (saveFile.ShowDialog() == true)
+            {
+                MessageBox.Show(saveFile.FileName);
+                string[] properName = saveFile.SafeFileName.Split('.');
+                PokedexNameLabel.Text = properName[0];
+            }
+        }
+
+        private void Add_Clicked(object sender, RoutedEventArgs e)
+        {
+            PokeDexEditor editor = new PokeDexEditor();
+            if (editor.ShowDialog() == true)
+            {
+                MessageBox.Show(editor.tempPokemon.ToString());
+            }
+        }
+
+        private void Edit_Clicked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Remove_Clicked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

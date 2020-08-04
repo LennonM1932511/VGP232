@@ -136,7 +136,7 @@ namespace PokemonLib
             return this[Count - 1];
         }
 
-        List<Pokemon> GetAllPokemonOfType(Pokemon.PokemonType type)
+        public List<Pokemon> GetAllPokemonOfType(Pokemon.PokemonType type)
         {
             // create list to save pokemon of same type
             PokeDex pokemons = new PokeDex();

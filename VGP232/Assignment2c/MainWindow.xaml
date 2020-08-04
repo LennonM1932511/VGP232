@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Assignment2c"
         mc:Ignorable="d"
-        Title="POKéDEX EDITOR" Height="600" Width="400" Icon="images/pokeball.png" FontFamily="/Assignment2c;component/#Reactor7" FontSize="32" WindowStartupLocation="CenterScreen" Foreground="White" ResizeMode="NoResize" TextOptions.TextFormattingMode="Display">
+        Title="POKéDEX EDITOR" Height="640" Width="540" Icon="images/pokeball.png" FontFamily="/Assignment2c;component/#Reactor7" FontSize="32" WindowStartupLocation="CenterScreen" Foreground="White" ResizeMode="NoResize" TextOptions.TextFormattingMode="Display">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
             <GradientStop Color="#FF720317" Offset="1"/>
@@ -13,7 +13,19 @@
         </LinearGradientBrush>
     </Window.Background>
     <Grid>
-        <Label Content="POKéDEX" HorizontalAlignment="Left" Margin="7,11,0,0" VerticalAlignment="Top" Foreground="White">
+        <StackPanel HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top" Orientation="Horizontal">
+            <Button x:Name="OpenPokedexButton" Content="OPEN" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" FontSize="16" Height="32" Click="OpenPokedexButton_Click" BorderThickness="6,0,0,0" Focusable="False" Background="#FF27AAFC" BorderBrush="#FF196A9F">
+                <Button.Effect>
+                    <DropShadowEffect Direction="-45" BlurRadius="0" ShadowDepth="3"/>
+                </Button.Effect>
+            </Button>
+            <Button x:Name="SavePokedexButton" Content="SAVE" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" FontSize="16" Height="32" Click="SavePokedexButton_Click" Margin="7,0,0,0" Focusable="False" Background="#FF51AD60" BorderBrush="#FF23762F">
+                <Button.Effect>
+                    <DropShadowEffect Direction="-45" BlurRadius="0" ShadowDepth="3"/>
+                </Button.Effect>
+            </Button>
+        </StackPanel>
+        <Label Content="POKéDEX" HorizontalAlignment="Left" Margin="18,59,0,0" VerticalAlignment="Top" Foreground="White">
             <Label.Effect>
                 <DropShadowEffect Direction="-45" BlurRadius="0" ShadowDepth="2"/>
             </Label.Effect>
@@ -23,85 +35,76 @@
                 <DropShadowEffect Opacity="0.65" Direction="-45" BlurRadius="0" ShadowDepth="3"/>
             </Image.Effect>
         </Image>
-        <Label x:Name="pokedexCount" Content="0000" HorizontalAlignment="Right" Margin="0,10,8,0" VerticalAlignment="Top" Foreground="White">
+        <Label x:Name="pokedexCount" Content="0" HorizontalAlignment="Right" Margin="0,10,8,0" VerticalAlignment="Top" Foreground="White">
             <Label.Effect>
                 <DropShadowEffect Direction="-45" BlurRadius="0" ShadowDepth="2"/>
             </Label.Effect>
         </Label>
         <Image HorizontalAlignment="right" Margin="0,15,86,0" VerticalAlignment="Top" Source="images/pokeball.png" Stretch="None"/>
-        <Button x:Name="OpenPokedexButton" Content="OPEN" HorizontalAlignment="Left" Margin="131,14,0,0" VerticalAlignment="Top" Width="60" FontSize="16" Height="22" Click="OpenPokedexButton_Click">
-            <Button.Effect>
-                <DropShadowEffect Direction="-45" BlurRadius="0" ShadowDepth="2"/>
-            </Button.Effect>
-        </Button>
-        <Button x:Name="SavePokedexButton" Content="SAVE" HorizontalAlignment="Left" Margin="203,14,0,0" VerticalAlignment="Top" Width="60" FontSize="16" Height="22" Click="SavePokedexButton_Click">
-            <Button.Effect>
-                <DropShadowEffect Direction="-45" BlurRadius="0" ShadowDepth="2"/>
-            </Button.Effect>
-        </Button>
-        <Image Source="images/PokedexName.png" Stretch="None" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" Width="363" Height="36">
+        <Image Source="images/PokedexName.png" Stretch="None" HorizontalAlignment="Left" Margin="135,56,0,0" VerticalAlignment="Top" Width="363" Height="36">
             <Image.Effect>
                 <DropShadowEffect Opacity="0.65" Direction="-45" BlurRadius="0" ShadowDepth="2"/>
             </Image.Effect>
         </Image>
-        <TextBlock x:Name="PokedexNameLabel" Text="" HorizontalAlignment="Center" Margin="27,57,27,0" VerticalAlignment="Top" Width="340" TextAlignment="Center" Foreground="Black"/>
-        <Label Content="Sort by: " HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Width="111" Margin="12,95,0,0">
-            <Label.Effect>
-                <DropShadowEffect Direction="-45" BlurRadius="0" ShadowDepth="2"/>
-            </Label.Effect>
-        </Label>
-        <WrapPanel HorizontalAlignment="Center" Height="90" VerticalAlignment="Top" Width="344" Margin="0,129,0,0">
-            <RadioButton x:Name="byIndex" Content=" Index" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,0" Width="120" GroupName="SortBy">
-                <RadioButton.Effect>
-                    <DropShadowEffect Direction="-45" BlurRadius="0" ShadowDepth="2"/>
-                </RadioButton.Effect>
-            </RadioButton>
-            <RadioButton x:Name="byName" Content=" Name" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,0" Width="120" GroupName="SortBy">
-                <RadioButton.Effect>
-                    <DropShadowEffect Direction="-45" BlurRadius="0" ShadowDepth="2"/>
-                </RadioButton.Effect>
-            </RadioButton>
-            <RadioButton x:Name="byHP" Content=" HP" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,5,0,0" GroupName="SortBy">
-                <RadioButton.Effect>
-                    <DropShadowEffect Direction="-45" BlurRadius="0" ShadowDepth="2"/>
-                </RadioButton.Effect>
-            </RadioButton>
-            <RadioButton x:Name="byAttack" Content=" Attack" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,0" Width="120" GroupName="SortBy">
-                <RadioButton.Effect>
-                    <DropShadowEffect Direction="-45" BlurRadius="0" ShadowDepth="2"/>
-                </RadioButton.Effect>
-            </RadioButton>
-            <RadioButton x:Name="byDefense" Content=" Defense" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,0" Width="120" GroupName="SortBy">
-                <RadioButton.Effect>
-                    <DropShadowEffect Direction="-45" BlurRadius="0" ShadowDepth="2"/>
-                </RadioButton.Effect>
-            </RadioButton>
-            <RadioButton x:Name="bySpeed" Content=" Speed" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,5,0,0" GroupName="SortBy">
-                <RadioButton.Effect>
-                    <DropShadowEffect Direction="-45" BlurRadius="0" ShadowDepth="2"/>
-                </RadioButton.Effect>
-            </RadioButton>
-            <RadioButton x:Name="bySpAtk" Content=" Sp Atk" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,0" Width="120" GroupName="SortBy">
-                <RadioButton.Effect>
-                    <DropShadowEffect Direction="-45" BlurRadius="0" ShadowDepth="2"/>
-                </RadioButton.Effect>
-            </RadioButton>
-            <RadioButton x:Name="bySpDef" Content=" Sp Def" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,0" Width="120" GroupName="SortBy">
-                <RadioButton.Effect>
-                    <DropShadowEffect Direction="-45" BlurRadius="0" ShadowDepth="2"/>
-                </RadioButton.Effect>
-            </RadioButton>
-            <RadioButton x:Name="byTotal" Content=" Total" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,5,0,0" GroupName="SortBy">
-                <RadioButton.Effect>
-                    <DropShadowEffect Direction="-45" BlurRadius="0" ShadowDepth="2"/>
-                </RadioButton.Effect>
-            </RadioButton>
-        </WrapPanel>
-        <StackPanel HorizontalAlignment="Center" Margin="0,0,0,11" VerticalAlignment="Bottom" Width="250" Orientation="Horizontal" Height="32">
-            <Button Content="Add" Click="Add_Clicked" FontSize="16" Height="32" Width="80"/>
-            <Button Content="Edit" Click="Edit_Clicked" FontSize="16" Height="32" Width="80" Margin="5,0"/>
-            <Button Content="Remove" Click="Remove_Clicked" FontSize="16" Height="32" Width="80"/>
+        <TextBlock x:Name="PokedexNameLabel" Text="" HorizontalAlignment="Left" Margin="153,64,0,0" VerticalAlignment="Top" Width="329" Foreground="Black"/>
+        <GroupBox Header=" Sort by" HorizontalAlignment="Center" Height="122" VerticalAlignment="Top" Width="380" Margin="0,103,0,0">
+            <GroupBox.Effect>
+                <DropShadowEffect BlurRadius="0" ShadowDepth="2" Direction="-45"/>
+            </GroupBox.Effect>
+            <WrapPanel>
+                <RadioButton x:Name="Index" Content=" Index" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,5,0,0" Width="120" GroupName="SortBy" Checked="Sort_Checked" />
+                <RadioButton x:Name="Name" Content=" Name" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,0" Width="120" GroupName="SortBy" Checked="Sort_Checked"/>
+                <RadioButton x:Name="HP" Content=" HP" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,5,0,0" GroupName="SortBy" Checked="Sort_Checked"/>
+                <RadioButton x:Name="Attack" Content=" Attack" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,5,0,0" Width="120" GroupName="SortBy" Checked="Sort_Checked"/>
+                <RadioButton x:Name="Defense" Content=" Defense" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,0" Width="120" GroupName="SortBy" Checked="Sort_Checked"/>
+                <RadioButton x:Name="Speed" Content=" Speed" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,5,0,0" GroupName="SortBy" Checked="Sort_Checked"/>
+                <RadioButton x:Name="SpAtk" Content=" Sp Atk" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,5,0,0" Width="120" GroupName="SortBy" Checked="Sort_Checked"/>
+                <RadioButton x:Name="SpDef" Content=" Sp Def" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,0" Width="120" GroupName="SortBy" Checked="Sort_Checked"/>
+                <RadioButton x:Name="Total" Content=" Total" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,5,0,0" GroupName="SortBy" Checked="Sort_Checked"/>
+            </WrapPanel>
+        </GroupBox>
+        <StackPanel HorizontalAlignment="Center" Margin="0,0,0,11" VerticalAlignment="Bottom" Orientation="Horizontal">
+            <Button Click="Add_Clicked" FontSize="16" Height="32" Width="90" Background="#FF51AD60" BorderBrush="#FF23762F" Focusable="False">
+                <Button.Effect>
+                    <DropShadowEffect Direction="-45" BlurRadius="0" ShadowDepth="3"/>
+                </Button.Effect>
+                <StackPanel Orientation="Horizontal" Margin="-4,0,0,0">
+                    <Image Source="images/pokeballicon.png" Stretch="None" VerticalAlignment="Center"/>
+                    <TextBlock VerticalAlignment="Center" Margin="5,2,0,0">ADD</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Click="Edit_Clicked" FontSize="16" Height="32" Width="90" Margin="7,0" Background="#FF27AAFC" BorderBrush="#FF196A9F" Focusable="False">
+                <Button.Effect>
+                    <DropShadowEffect Direction="-45" BlurRadius="0" ShadowDepth="3"/>
+                </Button.Effect>
+                <StackPanel Orientation="Horizontal" Margin="-4,0,0,0">
+                    <Image Source="images/pokeballicon.png" Stretch="None" VerticalAlignment="Center"/>
+                    <TextBlock VerticalAlignment="Center" Margin="5,2,0,0">EDIT</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Click="Remove_Clicked" FontSize="16" Height="32" Width="90" Background="#FFDCBF0A" Focusable="False" BorderBrush="#FFAC960B">
+                <Button.Effect>
+                    <DropShadowEffect Direction="-45" BlurRadius="0" ShadowDepth="3"/>
+                </Button.Effect>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="images/pokeballicon.png" Stretch="None" VerticalAlignment="Center"/>
+                    <TextBlock VerticalAlignment="Center" Margin="5,2,0,0">REMOVE</TextBlock>
+                </StackPanel>
+            </Button>
+
         </StackPanel>
-        <ListBox Height="230" Margin="0,0,0,60" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="350"/>
+        <ListBox x:Name="PokedexListbox" Height="280" Margin="0,0,0,55" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="460" FontSize="20" BorderBrush="Black" BorderThickness="3" Foreground="#FF333832" Padding="5px">
+            <ListBox.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FFBBDEB0"/>
+                    <GradientStop Color="#FFA7BFA0" Offset="1"/>
+                </RadialGradientBrush>
+            </ListBox.Background>
+        </ListBox>
+        <ComboBox x:Name="TypeFilter" Text="{Binding Type1}" Height="28" Margin="37,230,387,354" Width="110" VerticalContentAlignment="Center" Background="#FFDEDEDE" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" SelectionChanged="TypeFilter_SelectionChanged" >
+            <ComboBox.Effect>
+                <DropShadowEffect BlurRadius="0" Direction="-45" Opacity="0.65" ShadowDepth="3"/>
+            </ComboBox.Effect>
+        </ComboBox>
     </Grid>
 </Window>

@@ -22,6 +22,17 @@ namespace Assignment2c
     {
         public Pokemon tempPokemon { get; set; }
 
+        public int updateTotal()
+        {
+            return tempPokemon.HP
+                + tempPokemon.Attack
+                + tempPokemon.Defense
+                + tempPokemon.Speed
+                + tempPokemon.SpecialAttack
+                + tempPokemon.SpecialDefense;
+        }
+
+
         public PokeDexEditor()
         {
             InitializeComponent();
@@ -29,7 +40,17 @@ namespace Assignment2c
             type2Combo.ItemsSource = Enum.GetNames(typeof(Pokemon.PokemonType));
 
             tempPokemon = new Pokemon();
-            this.DataContext = tempPokemon;
+            DataContext = tempPokemon;
+            Title = "ADD POKéMON";
+            SubmitButton.Content = "ADD";
+        }
+
+        public void Setup(Pokemon pokemon)
+        {
+            tempPokemon = pokemon;
+            DataContext = tempPokemon;
+            Title = "EDIT POKéMON";
+            SubmitButton.Content = "SAVE";
         }
 
         private void Cancel_Clicked(object sender, RoutedEventArgs e)
@@ -43,5 +64,13 @@ namespace Assignment2c
             DialogResult = true;
             Close();
         }
+
+        private void TextBox_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            TotalBox.Text = updateTotal().ToString();
+            tempPokemon.Total = updateTotal();
+        }
+
+
     }
 }

@@ -90,6 +90,8 @@ namespace Assignment2c
         private void Add_Clicked(object sender, RoutedEventArgs e)
         {
             PokeDexEditor editor = new PokeDexEditor();
+            // Set suggested Pokemon Index to current PokeDex count + 1
+            editor.TempPokemon.Index = (pokedexLoader.Count() + 1).ToString();
             if (editor.ShowDialog() == true)
             {
                 pokedexLoader.Add(editor.TempPokemon);

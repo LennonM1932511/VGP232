@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Assignment2c"
         mc:Ignorable="d"
-        Title="POKéDEX EDITOR" Height="640" Width="540" Icon="images/pokeball.png" FontFamily="/Assignment2c;component/#Reactor7" FontSize="32" WindowStartupLocation="CenterScreen" Foreground="White" ResizeMode="NoResize" TextOptions.TextFormattingMode="Display">
+        Title="POKéDEX EDITOR" Height="660" Width="540" Icon="images/pokeball.png" FontFamily="/Assignment2c;component/#Reactor7" FontSize="32" WindowStartupLocation="CenterScreen" Foreground="White" ResizeMode="NoResize" TextOptions.TextFormattingMode="Display">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
             <GradientStop Color="#FF720317" Offset="1"/>
@@ -100,11 +100,17 @@
                     <GradientStop Color="#FFA7BFA0" Offset="1"/>
                 </RadialGradientBrush>
             </ListBox.Background>
-        </ListBox>
-        <ComboBox x:Name="TypeFilter" Text="{Binding Type1}" Height="28" Margin="37,230,387,354" Width="110" VerticalContentAlignment="Center" Background="#FFDEDEDE" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" SelectionChanged="TypeFilter_SelectionChanged" >
-            <ComboBox.Effect>
-                <DropShadowEffect BlurRadius="0" Direction="-45" Opacity="0.65" ShadowDepth="3"/>
-            </ComboBox.Effect>
-        </ComboBox>
+        </ListBox>        
+        <StackPanel Orientation="Horizontal" Height="32" Margin="0,-110,0,0" Width="260">
+            <TextBlock Margin="0,0,6,0" VerticalAlignment="Center">
+                <TextBlock.Effect>
+                    <DropShadowEffect BlurRadius="0" Direction="-45" ShadowDepth="2"/>
+                </TextBlock.Effect>Type Filter</TextBlock>
+            <ComboBox x:Name="TypeFilter" Text="{Binding Type1}" Height="28" Width="125" VerticalContentAlignment="Center" Background="#FFDEDEDE" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" SelectionChanged="TypeFilter_SelectionChanged" >
+                <ComboBox.Effect>
+                    <DropShadowEffect BlurRadius="0" Direction="-45" Opacity="0.65" ShadowDepth="3"/>
+                </ComboBox.Effect>
+            </ComboBox>
+        </StackPanel>
     </Grid>
 </Window>

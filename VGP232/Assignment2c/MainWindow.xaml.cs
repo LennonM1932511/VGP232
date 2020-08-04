@@ -40,6 +40,7 @@ namespace Assignment2c
             List<string> poketypes = new List<string> { "All" };
             poketypes.AddRange(Enum.GetNames(typeof(Pokemon.PokemonType)));
             TypeFilter.ItemsSource = poketypes;
+           // TypeFilter.SelectedIndex = 0;
         }
 
         private void OpenPokedexButton_Click(object sender, RoutedEventArgs e)

@@ -20,35 +20,37 @@ namespace Assignment2c
     /// </summary>
     public partial class PokeDexEditor : Window
     {
-        public Pokemon tempPokemon { get; set; }
+        public Pokemon TempPokemon { get; set; }
 
-        public int updateTotal()
+        // Recalculate and return Total
+        public int UpdateTotal()
         {
-            return tempPokemon.HP
-                + tempPokemon.Attack
-                + tempPokemon.Defense
-                + tempPokemon.Speed
-                + tempPokemon.SpecialAttack
-                + tempPokemon.SpecialDefense;
+            return TempPokemon.HP
+                + TempPokemon.Attack
+                + TempPokemon.Defense
+                + TempPokemon.Speed
+                + TempPokemon.SpecialAttack
+                + TempPokemon.SpecialDefense;
         }
-
 
         public PokeDexEditor()
         {
             InitializeComponent();
+
+            // Populate comboboxes with Pokemon Types
             type1Combo.ItemsSource = Enum.GetNames(typeof(Pokemon.PokemonType));
             type2Combo.ItemsSource = Enum.GetNames(typeof(Pokemon.PokemonType));
 
-            tempPokemon = new Pokemon();
-            DataContext = tempPokemon;
+            TempPokemon = new Pokemon();
+            DataContext = TempPokemon;
             Title = "ADD POKéMON";
             SubmitButton.Content = "ADD";
         }
 
         public void Setup(Pokemon pokemon)
         {
-            tempPokemon = pokemon;
-            DataContext = tempPokemon;
+            TempPokemon = pokemon;
+            DataContext = TempPokemon;
             Title = "EDIT POKéMON";
             SubmitButton.Content = "SAVE";
         }
@@ -67,10 +69,9 @@ namespace Assignment2c
 
         private void TextBox_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            TotalBox.Text = updateTotal().ToString();
-            tempPokemon.Total = updateTotal();
+            // Update the total whenever data in textboxes change
+            TotalBox.Text = UpdateTotal().ToString();
+            TempPokemon.Total = UpdateTotal();
         }
-
-
     }
 }

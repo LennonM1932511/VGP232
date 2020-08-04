@@ -100,7 +100,7 @@
                     <GradientStop Color="#FFA7BFA0" Offset="1"/>
                 </RadialGradientBrush>
             </ListBox.Background>
-        </ListBox>        
+        </ListBox>
         <StackPanel Orientation="Horizontal" Height="32" Margin="0,-110,0,0" Width="260">
             <TextBlock Margin="0,0,6,0" VerticalAlignment="Center">
                 <TextBlock.Effect>

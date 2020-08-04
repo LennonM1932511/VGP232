@@ -22,51 +22,66 @@ namespace Assignment2c
     /// </summary>
     public partial class MainWindow : Window
     {
-        // Update function for refreshing the listbox and the pokedex count
+        PokeDex pokedexLoader;
+        private const string pokedexFiles = "POKéDEX Files|*.csv;*.xml;*.json";
+
+        public MainWindow()
+        {
+            InitializeComponent();
+
+            // Setup Listbox Default Source
+            pokedexLoader = new PokeDex();
+            PokedexListbox.ItemsSource = pokedexLoader;
+
+            // Setup ComboBox Types, add 'All', and remove 'none'
+            List<string> poketypes = new List<string> { "All" };
+            poketypes.AddRange(Enum.GetNames(typeof(Pokemon.PokemonType)));
+            poketypes.Remove(poketypes[1]);
+            TypeFilter.ItemsSource = poketypes;
+        }
+
+        // Update listbox and the pokedex count
         public void Update()
         {
             pokedexCount.Content = pokedexLoader.Count().ToString();
             PokedexListbox.Items.Refresh();
         }
 
-        PokeDex pokedexLoader;
-        //List<Pokemon> filteredPokemon;
-
-        public MainWindow()
-        {
-            InitializeComponent();
-            pokedexLoader = new PokeDex();
-            PokedexListbox.ItemsSource = pokedexLoader;
-            List<string> poketypes = new List<string> { "All" };
-            poketypes.AddRange(Enum.GetNames(typeof(Pokemon.PokemonType)));
-            TypeFilter.ItemsSource = poketypes;
-           // TypeFilter.SelectedIndex = 0;
-        }
-
         private void OpenPokedexButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFile = new OpenFileDialog();
-            openFile.Title = "OPEN POKéDEX";
-            openFile.Filter = "POKéDEX Files|*.csv;*.xml;*.json";
-            openFile.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            OpenFileDialog openFile = new OpenFileDialog
+            {
+                Title = "OPEN POKéDEX",
+                Filter = pokedexFiles,
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+            };
+
             if (openFile.ShowDialog() == true)
             {
                 pokedexLoader.Load(openFile.FileName);
+
+                // Get Filename without extention and set as Label text
                 string[] properName = openFile.SafeFileName.Split('.');
                 PokedexNameLabel.Text = properName[0];
+
                 Update();
             }
         }
 
         private void SavePokedexButton_Click(object sender, RoutedEventArgs e)
         {
-            SaveFileDialog saveFile = new SaveFileDialog();
-            saveFile.Title = "SAVE POKéDEX";
-            saveFile.Filter = "POKéDEX Files|*.csv;*.xml;*.json";
-            saveFile.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            SaveFileDialog saveFile = new SaveFileDialog
+            {
+                Title = "SAVE POKéDEX",
+                Filter = pokedexFiles,
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+            };
+
             if (saveFile.ShowDialog() == true)
             {
                 pokedexLoader.Save(saveFile.FileName);
+
+                // Get Filename without extention and set as Label text
                 string[] properName = saveFile.SafeFileName.Split('.');
                 PokedexNameLabel.Text = properName[0];
             }
@@ -77,7 +92,7 @@ namespace Assignment2c
             PokeDexEditor editor = new PokeDexEditor();
             if (editor.ShowDialog() == true)
             {
-                pokedexLoader.Add(editor.tempPokemon);
+                pokedexLoader.Add(editor.TempPokemon);
                 Update();
             }
         }
@@ -86,14 +101,10 @@ namespace Assignment2c
         {
             if (PokedexListbox.SelectedIndex != -1)
             {
-                Pokemon selectedPokemon = pokedexLoader[PokedexListbox.SelectedIndex];
-
                 PokeDexEditor editor = new PokeDexEditor();
-                editor.Setup(selectedPokemon);
-
+                editor.Setup((Pokemon)PokedexListbox.SelectedItem);
                 if (editor.ShowDialog() == true)
                 {
-                    pokedexLoader[PokedexListbox.SelectedIndex] = editor.tempPokemon;
                     Update();
                 }
             }
@@ -103,7 +114,12 @@ namespace Assignment2c
         {
             if (PokedexListbox.SelectedIndex != -1)
             {
-                pokedexLoader.RemoveAt(PokedexListbox.SelectedIndex);                
+                PokeDex pokedexTemp = new PokeDex();
+                pokedexTemp = (PokeDex)PokedexListbox.ItemsSource;
+
+                // Remove selected pokemon from all lists
+                pokedexTemp.Remove((Pokemon)PokedexListbox.SelectedItem);
+                pokedexLoader.Remove((Pokemon)PokedexListbox.SelectedItem);
                 Update();
             }
 
@@ -111,27 +127,34 @@ namespace Assignment2c
 
         private void Sort_Checked(object sender, RoutedEventArgs e)
         {
-            RadioButton btn = sender as RadioButton;
-            if (btn != null)
+            if (sender is RadioButton btn)
             {
+                // Set pokedexTemp to listbox source
+                PokeDex pokedexTemp = new PokeDex();
+                pokedexTemp = (PokeDex)PokedexListbox.ItemsSource;
+
+                // Sort both lists
+                pokedexTemp.SortBy(btn.Name);
                 pokedexLoader.SortBy(btn.Name);
                 Update();
-            }            
+            }
         }
 
         private void TypeFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (TypeFilter.SelectedItem.ToString() == "All")
+            // check if filter is selected
+            if (TypeFilter.SelectedIndex != 0)
             {
-                PokedexListbox.ItemsSource = pokedexLoader;
-                Update();
+                // Set the selectedType to the correct Enum and filter list by type
+                Pokemon.PokemonType selectedType =
+                    (Pokemon.PokemonType)Enum.Parse(typeof(Pokemon.PokemonType), TypeFilter.SelectedItem.ToString(), true);
+                PokedexListbox.ItemsSource = pokedexLoader.GetAllPokemonOfType(selectedType);
+                PokedexListbox.Items.Refresh();
             }
             else
             {
-                Pokemon.PokemonType selectedType = (Pokemon.PokemonType)Enum.Parse(typeof(Pokemon.PokemonType), TypeFilter.SelectedItem.ToString(), true);
-                List<Pokemon> typePokemon = pokedexLoader.GetAllPokemonOfType(selectedType);
-                PokedexListbox.ItemsSource = typePokemon;
-                PokedexListbox.Items.Refresh();
+                PokedexListbox.ItemsSource = pokedexLoader;
+                Update();
             }
         }
     }

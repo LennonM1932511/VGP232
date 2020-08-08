@@ -15,6 +15,11 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PokemonLib;
 
+// Assignment 2c
+// NAME: Lennon Marshall
+// STUDENT NUMBER: 1932511
+// MARKS: 100/100 (bonus +5) Excellent work! Everything is functional, and aesthetically pleasing with the icon, custom font, and even showing the file loaded and counter.
+
 namespace Assignment2c
 {
     /// <summary>
@@ -40,6 +45,7 @@ namespace Assignment2c
             TypeFilter.ItemsSource = poketypes;
         }
 
+        // LC: nice to see a helper function to do the update.
         // Update listbox and the pokedex count
         public void Update()
         {
@@ -49,6 +55,7 @@ namespace Assignment2c
 
         private void OpenPokedexButton_Click(object sender, RoutedEventArgs e)
         {
+            // LC: nice touch to select file from my documents
             OpenFileDialog openFile = new OpenFileDialog
             {
                 Title = "OPEN POKéDEX",

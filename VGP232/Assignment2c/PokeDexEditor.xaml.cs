@@ -22,6 +22,7 @@ namespace Assignment2c
     {
         public Pokemon TempPokemon { get; set; }
 
+        // LC: excellent.
         // Recalculate and return Total
         public int UpdateTotal()
         {

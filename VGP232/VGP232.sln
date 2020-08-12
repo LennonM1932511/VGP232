@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonLib", "PokemonLib\Po
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment2c", "Assignment2c\Assignment2c.csproj", "{3BF54F28-3785-4060-8063-27B3D6B3939A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week5", "Week5\Week5.csproj", "{01DB5615-D1F3-4FFE-A54E-60F335694B79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextureAtlasLib", "TextureAtlasLib\TextureAtlasLib.csproj", "{6A6F16C6-1145-4838-ACA0-A06265CD16DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{3BF54F28-3785-4060-8063-27B3D6B3939A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BF54F28-3785-4060-8063-27B3D6B3939A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BF54F28-3785-4060-8063-27B3D6B3939A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01DB5615-D1F3-4FFE-A54E-60F335694B79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01DB5615-D1F3-4FFE-A54E-60F335694B79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01DB5615-D1F3-4FFE-A54E-60F335694B79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01DB5615-D1F3-4FFE-A54E-60F335694B79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A6F16C6-1145-4838-ACA0-A06265CD16DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A6F16C6-1145-4838-ACA0-A06265CD16DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A6F16C6-1145-4838-ACA0-A06265CD16DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A6F16C6-1145-4838-ACA0-A06265CD16DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

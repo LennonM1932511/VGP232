@@ -55,9 +55,9 @@ namespace TextureAtlasLib
 
             string outputPath = Path.Combine(OutputDirectory, OutputFile);
 
-            if (overwrite)
+            if (File.Exists(outputPath))
             {
-                if (File.Exists(outputPath))
+                if (overwrite)
                 {
                     File.Delete(outputPath);
                 }

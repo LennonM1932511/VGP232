@@ -6,9 +6,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace TextureAtlasLib
 {
+    [Serializable]
     public class Spritesheet
     {
         public int Columns { get; set; }
@@ -16,6 +18,13 @@ namespace TextureAtlasLib
         public String OutputDirectory { get; set; }
         public bool IncludeMetaData { get; set; }
         public List<String> InputPaths { get; set; }
+
+        XmlSerializer serializer;
+
+        public Spritesheet()
+        {
+            serializer = new XmlSerializer(typeof(Spritesheet));
+        }
 
         /// <summary>
         /// Checks if the properties are set correctly. If it is not correct, then it will throw an exception.
@@ -41,7 +50,6 @@ namespace TextureAtlasLib
             {
                 throw new Exception("Column size must be at least 1");
             }
-
         }
 
         /// <summary>
@@ -132,18 +140,64 @@ namespace TextureAtlasLib
                             col = 0;
                             row++;
                         }
+                        spriteInfos.Add(sprite);
                     }
                 }
 
                 if (IncludeMetaData)
                 {
                     string exportedMetaData = Path.GetFileNameWithoutExtension(outputPath) + ".json";
+                    string jsonPath = Path.Combine(OutputDirectory, exportedMetaData);
                     string json = JsonConvert.SerializeObject(spriteInfos);
-                    File.WriteAllText(exportedMetaData, json);
+                    File.WriteAllText(jsonPath, json);
                 }
 
                 sheet.Save(outputPath);
             }
+        }
+
+        public bool LoadXML(string path)
+        {
+            bool success = false;
+            try
+            {
+                using (StreamReader reader = new StreamReader(path))
+                {
+                    Spritesheet temp = serializer.Deserialize(reader) as Spritesheet;
+                    if (temp != null)
+                    {
+                        Columns = temp.Columns;
+                        OutputDirectory = temp.OutputDirectory;
+                        OutputFile = temp.OutputFile;
+                        IncludeMetaData = temp.IncludeMetaData;
+                        InputPaths.AddRange(temp.InputPaths);
+                    }
+                    success = true;
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("An exception occurred attempting to deserialize from XML");
+            }
+            return success;
+        }
+
+        public bool SaveAsXML(string path)
+        {
+            bool success = false;
+            try
+            {
+                using (StreamWriter writer = new StreamWriter(path))
+                {
+                    serializer.Serialize(writer, this);
+                    success = true;
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("An exception occurred attempting to serialize to XML");
+            }
+            return success;
         }
 
     }

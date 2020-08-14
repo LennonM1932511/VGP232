@@ -23,6 +23,7 @@ namespace TextureAtlasLib
 
         public Spritesheet()
         {
+            InputPaths = new List<string>();
             serializer = new XmlSerializer(typeof(Spritesheet));
         }
 

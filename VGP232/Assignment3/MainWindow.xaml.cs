@@ -19,7 +19,7 @@ using TextureAtlasLib;
 // Assignment 3
 // NAME: Lennon Marshall
 // STUDENT NUMBER: 1932511
-// MARKS: 95/100 (bonus +2) Excellent work! Functionally working. However, if you open a file it doesn't clear the image list and then add the elements, instead it appends to it. Nice use of commands. Missing prompt to save when we exit, also when we open a file and we didn't modify it, it was also prompt to save when we new it. The validate function is redudant, you can catch the exception and get the ex.Message and show it in a MessageBox.
+// MARKS: 94/100 (bonus +2) Excellent work! Functionally working. However, if you open a file it doesn't clear the image list and then add the elements, instead it appends to it also instead of add range, you should add one at a time while validating the path if the file still exists to generate a list of missing files. Nice use of commands. Missing prompt to save when we exit, also when we open a file and we didn't modify it, it was also prompt to save when we new it. The validate function is redudant, you can catch the exception and get the ex.Message and show it in a MessageBox.
 
 // LC: (bonus) nice attempt to add the Edit Menu, but more works needs to be done to be able to use it with the listbox.
 
@@ -120,6 +120,7 @@ namespace Assignment3
                 {
                     // load data into main window
                     // LC: you should clear it before you add to it.
+                    // LC: also you should add it one by one in a for loop to validate the path and generate the error message.
                     images.AddRange(sheet.InputPaths);
                     ImageListBox.Items.Refresh();
                     tbColumns.Text = sheet.Columns.ToString();

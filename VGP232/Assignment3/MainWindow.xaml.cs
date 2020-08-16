@@ -16,6 +16,13 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TextureAtlasLib;
 
+// Assignment 3
+// NAME: Lennon Marshall
+// STUDENT NUMBER: 1932511
+// MARKS: 95/100 (bonus +2) Excellent work! Functionally working. However, if you open a file it doesn't clear the image list and then add the elements, instead it appends to it. Nice use of commands. Missing prompt to save when we exit, also when we open a file and we didn't modify it, it was also prompt to save when we new it. The validate function is redudant, you can catch the exception and get the ex.Message and show it in a MessageBox.
+
+// LC: (bonus) nice attempt to add the Edit Menu, but more works needs to be done to be able to use it with the listbox.
+
 namespace Assignment3
 {
     /// <summary>
@@ -43,10 +50,13 @@ namespace Assignment3
         // File Menu
         private void ExitClicked(object sender, RoutedEventArgs e)
         {
+            // LC: this is suppose to prompt to save if it's changed as well before we quit.
+
             // exit the application
             Application.Current.Shutdown();
         }
 
+        // LC: nice use of commands
         private void NewCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
@@ -109,6 +119,7 @@ namespace Assignment3
                 else
                 {
                     // load data into main window
+                    // LC: you should clear it before you add to it.
                     images.AddRange(sheet.InputPaths);
                     ImageListBox.Items.Refresh();
                     tbColumns.Text = sheet.Columns.ToString();
@@ -133,6 +144,7 @@ namespace Assignment3
         private void SaveCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             // save existing project
+            // LC: this returns a bool, should show a message box explaining why it fails.
             sheet.SaveAsXML(projectPath);
         }
 
@@ -145,6 +157,7 @@ namespace Assignment3
         private void SaveAsCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             // check if textboxes are empty and set the sheet values for saving
+            // LC: can't you just assign the textboxes/controls values into the sheet?
             if (tbOutputFile.Text == "")
             {
                 sheet.OutputFile = "";
@@ -165,6 +178,7 @@ namespace Assignment3
 
             if (saveFile.ShowDialog() == true)
             {
+                // LC: this returns a bool, should show a message box explaining why it fails.
                 sheet.SaveAsXML(saveFile.FileName);
 
                 // Set the displayed project save and keep the path for Save
@@ -238,6 +252,7 @@ namespace Assignment3
             sheet.InputPaths = images;
 
             // validate that all required data is set before generating output
+            // LC: all you needed to do was to wrap this in a try-catch and use the MessageBox to show the exception.Message
             if (Validate())
             {
                 sheet.Generate(true);
@@ -246,12 +261,14 @@ namespace Assignment3
                 if (MessageBoxResult.Yes == MessageBox.Show("Sprite sheet generated. Would you like to view?", "Success", MessageBoxButton.YesNo))
                 {
                     // Open explorer and select the file
+                    // LC: even better to select the file.
                     Process.Start("explorer.exe", "/select," + sheet.OutputDirectory + "\\" + sheet.OutputFile);
                 }
             }
         }
 
         // General Methods
+        // LC: this method is redundant because all you need to do it to do a try-catch on Generate and show the ex.Message into a MessageBox
         private bool Validate()
         {
             bool success = false;

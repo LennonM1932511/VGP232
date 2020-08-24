@@ -178,6 +178,7 @@ namespace TextureAtlasLib
             }
             catch (Exception)
             {
+                // LC: probably should throw the exception so that it can be shown in a MessageBox in the MainWindow
                 Console.WriteLine("An exception occurred attempting to deserialize from XML");
             }
             return success;
@@ -196,6 +197,7 @@ namespace TextureAtlasLib
             }
             catch (Exception)
             {
+                // LC: probably should throw the exception so that it can be shown in a MessageBox in the MainWindow
                 Console.WriteLine("An exception occurred attempting to serialize to XML");
             }
             return success;

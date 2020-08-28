@@ -16,8 +16,7 @@ namespace WeaponLib
 
         public enum DamageType
         {
-            Bludgeoning, Piercing, Slashing, Acid, Cold, Fire,
-            Force, Lightning, Necrotic, Poison, Psychic, Radiant, Thunder
+            Bludgeoning, Piercing, Slashing
         }
                 
         public string Name { get; set; }

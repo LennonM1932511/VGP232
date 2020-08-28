@@ -94,5 +94,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WeaponLib\WeaponLib.csproj">
+      <Project>{d89c63c9-fa4c-4596-86d7-dc814fa9a7c0}</Project>
+      <Name>WeaponLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

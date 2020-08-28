@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment3", "Assignment3\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week6", "Week6\Week6.csproj", "{2686E983-9DAC-4FC2-9739-C0D91E732115}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinalProject_DnDWeaponDesigner", "FinalProject_DnDWeaponDesigner\FinalProject_DnDWeaponDesigner.csproj", "{1C3908C5-4595-4D8B-B160-E59A08F60BB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeaponLib", "WeaponLib\WeaponLib.csproj", "{D89C63C9-FA4C-4596-86D7-DC814FA9A7C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +79,14 @@ Global
 		{2686E983-9DAC-4FC2-9739-C0D91E732115}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2686E983-9DAC-4FC2-9739-C0D91E732115}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2686E983-9DAC-4FC2-9739-C0D91E732115}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C3908C5-4595-4D8B-B160-E59A08F60BB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C3908C5-4595-4D8B-B160-E59A08F60BB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C3908C5-4595-4D8B-B160-E59A08F60BB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C3908C5-4595-4D8B-B160-E59A08F60BB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D89C63C9-FA4C-4596-86D7-DC814FA9A7C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D89C63C9-FA4C-4596-86D7-DC814FA9A7C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D89C63C9-FA4C-4596-86D7-DC814FA9A7C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D89C63C9-FA4C-4596-86D7-DC814FA9A7C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

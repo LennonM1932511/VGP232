@@ -25,5 +25,10 @@ namespace FinalProject_DnDWeaponDesigner
         {
             InitializeComponent();
         }
+
+        private void ExitClicked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

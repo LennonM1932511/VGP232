@@ -5,8 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FinalProject_DnDWeaponDesigner"
         mc:Ignorable="d"
-        Title="DnD Weapon Designer" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="DnD Weapon Designer" MinHeight="450" MinWidth="800">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" Height="26" Padding="2">
+            <MenuItem Header="File">
+                <MenuItem Command="New"/>
+                <MenuItem Command="Open"/>
+                <MenuItem Command="Save"/>
+                <MenuItem Command="SaveAs"/>
+                <Separator />
+                <MenuItem Header="Exit" Click="ExitClicked"/>
+            </MenuItem>
+        </Menu>
+        <Grid DockPanel.Dock="Bottom" Margin="16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="128"/>
+                <ColumnDefinition Width="128"/>
+                <ColumnDefinition Width="128"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="48"/>
+                <RowDefinition Height="48"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="tbProjectTitle" Text="Untitled Project" FontStyle="Italic" FontSize="16" VerticalAlignment="Center" />
+            <StackPanel Grid.Column="3" Orientation="Horizontal" VerticalAlignment="Center">
+                <Label Content="Weapon Count:" />
+                <TextBlock x:Name="tbWeaponCount" Text="0" VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center">
+                <Label Content="Show Category: "/>
+                <ComboBox Width="128" SelectedValue="All"/>
+            </StackPanel>
+            <DataGrid Grid.ColumnSpan="7" Grid.Row="2" />
+        </Grid>
+    </DockPanel>
 </Window>

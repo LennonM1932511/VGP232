@@ -24,7 +24,7 @@ namespace WeaponLib
             bool success = false;
 
             if (string.IsNullOrEmpty(fileName))
-            {
+            {                
                 Console.WriteLine("No input file specified.");
             }
             else if (!File.Exists(fileName))
@@ -108,8 +108,8 @@ namespace WeaponLib
                     List<Weapon> temp = serializer.Deserialize(reader) as List<Weapon>;
                     if (temp != null)
                     {
-                        this.Clear();
-                        this.AddRange(temp);
+                        Clear();
+                        AddRange(temp);
                     }
                     success = true;
                 }
@@ -151,8 +151,8 @@ namespace WeaponLib
                     WeaponList temp = JsonConvert.DeserializeObject<WeaponList>(jsonData);
                     if (temp != null)
                     {
-                        this.Clear();
-                        this.AddRange(temp);
+                        Clear();
+                        AddRange(temp);
                     }
                     success = true;
                 }

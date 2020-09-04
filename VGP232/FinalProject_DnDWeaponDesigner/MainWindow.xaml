@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FinalProject_DnDWeaponDesigner"
         mc:Ignorable="d"
-        Title="DnD Weapon Designer" MinHeight="450" MinWidth="800">
+        Title="Weapon Designer" MinHeight="450" MinWidth="800">
     <DockPanel>
         <Menu DockPanel.Dock="Top" Height="26" Padding="2">
             <MenuItem Header="File">
@@ -38,7 +38,10 @@
                 <Label Content="Show Category: "/>
                 <ComboBox Width="128" SelectedValue="All"/>
             </StackPanel>
-            <DataGrid Grid.ColumnSpan="7" Grid.Row="2" />
+            <Button Content="ADD" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Width="120"/>
+            <Button Content="EDIT" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" Width="120"/>
+            <Button Content="REMOVE" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" Width="120"/>
+            <DataGrid Grid.ColumnSpan="7" Grid.Row="2"/>
         </Grid>
     </DockPanel>
 </Window>

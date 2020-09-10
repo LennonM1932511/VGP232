@@ -86,6 +86,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Bookmania.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -99,6 +102,15 @@
       <Project>{d89c63c9-fa4c-4596-86d7-dc814fa9a7c0}</Project>
       <Name>WeaponLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\d20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\shortsword.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\longsword.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

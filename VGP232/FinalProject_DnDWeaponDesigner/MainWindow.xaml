@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FinalProject_DnDWeaponDesigner"
         mc:Ignorable="d"
-        Title="Weapon Designer" MinHeight="450" MinWidth="800">
-    <DockPanel>
+        Title="Weapon Designer" MinHeight="450" MinWidth="800" Icon="images/d20.png" FontFamily="/FinalProject_DnDWeaponDesigner;component/#Bookmania">
+    <DockPanel Background="#EEE5CE">
         <Menu DockPanel.Dock="Top" Height="26" Padding="2">
             <MenuItem Header="File">
                 <MenuItem Command="New"/>
@@ -31,17 +31,49 @@
             </Grid.RowDefinitions>
             <TextBlock x:Name="tbProjectTitle" Text="Untitled Project" FontStyle="Italic" FontSize="16" VerticalAlignment="Center" />
             <StackPanel Grid.Column="3" Orientation="Horizontal" VerticalAlignment="Center">
-                <Label Content="Weapon Count:" />
+                <Label Content="INDEX: "  FontWeight="Bold"/>
                 <TextBlock x:Name="tbWeaponCount" Text="0" VerticalAlignment="Center"/>
             </StackPanel>
             <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center">
-                <Label Content="Show Category: "/>
-                <ComboBox Width="128" SelectedValue="All"/>
+                <Label Content="SHOW CATEGORY: " FontWeight="Bold"/>
+                <ComboBox x:Name="cbCategory" Width="128" SelectedValue="All"/>
             </StackPanel>
-            <Button Content="ADD" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Width="120"/>
-            <Button Content="EDIT" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" Width="120"/>
-            <Button Content="REMOVE" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" Width="120"/>
-            <DataGrid Grid.ColumnSpan="7" Grid.Row="2"/>
+            <Button Content="ADD" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Width="120" FontWeight="Bold"/>
+            <Button Content="EDIT" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" Width="120" FontWeight="Bold"/>
+            <Button Content="REMOVE" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" Width="120" FontWeight="Bold"/>
+
+            <DataGrid x:Name="dgWeaponList" Grid.ColumnSpan="7" Grid.Row="2"  AutoGenerateColumns="False" IsReadOnly="True" AlternatingRowBackground="#E0E5C1"  AlternationCount="2" GridLinesVisibility="None" FontFamily="Arial">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Category" Binding="{Binding eCategory}" MinWidth="100"/>
+                    <DataGridTextColumn Header="Name" Binding="{Binding sName}" MinWidth="200" Width="*"/>
+                    <DataGridTextColumn Header="Price" Binding="{Binding sPrice}" Width="60"/>
+                    <DataGridTextColumn Header="Weight" Binding="{Binding sWeight}" Width="60"  />
+                    <DataGridTextColumn Header="Damage" Binding="{Binding sDamage}"  Width="60" />
+                    <DataGridTextColumn Header="Type" Binding="{Binding eDamageType}"  Width="100" />
+                    <DataGridTextColumn Header="Range" Binding="{Binding sRange}"  Width="60" />
+                    <DataGridTextColumn Header="Properties" Binding="{Binding sProperties}" MinWidth="100"  Width="*"/>
+                    <DataGridTextColumn Header="Boosts" Binding="{Binding sBoosts}" MinWidth="100" Width="*"/>
+                </DataGrid.Columns>
+                <DataGrid.RowDetailsTemplate>
+                    <DataTemplate>
+                        <DockPanel Background="#EEE5CE">
+                            <Image DockPanel.Dock="Left" Source="{Binding sImage}" Height="100" Margin="10" />
+                            <Grid Margin="0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="Description: " FontWeight="Bold" />
+                                <TextBlock Text="{Binding sDescription}" Grid.Column="1" />
+
+                            </Grid>
+                        </DockPanel>
+                    </DataTemplate>
+                </DataGrid.RowDetailsTemplate>
+            </DataGrid>
         </Grid>
     </DockPanel>
 </Window>

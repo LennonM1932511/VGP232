@@ -87,7 +87,7 @@ namespace WeaponLib
             // check each weapon for the matching category
             foreach (Weapon weapon in this)
             {
-                if (weapon.category == category)
+                if (weapon.eCategory == category)
                 {
                     weapons.Add(weapon);
                 }

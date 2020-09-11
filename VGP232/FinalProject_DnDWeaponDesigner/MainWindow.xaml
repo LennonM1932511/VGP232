@@ -42,14 +42,18 @@
             <Button Content="EDIT" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" Width="120" FontWeight="Bold"/>
             <Button Content="REMOVE" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" Width="120" FontWeight="Bold"/>
 
-            <DataGrid x:Name="dgWeaponList" Grid.ColumnSpan="7" Grid.Row="2"  AutoGenerateColumns="False" IsReadOnly="True" AlternatingRowBackground="#E0E5C1"  AlternationCount="2" GridLinesVisibility="None" FontFamily="Arial">
+            <DataGrid x:Name="dgWeaponList" Grid.ColumnSpan="7" Grid.Row="2"  
+                      AutoGenerateColumns="False" IsReadOnly="True" 
+                      AlternatingRowBackground="#E0E5C1" AlternationCount="2" GridLinesVisibility="None" 
+                      FontFamily="Open Sans" Background="White" BorderBrush="Black" CanUserResizeRows="False">
+                
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Category" Binding="{Binding eCategory}" MinWidth="100"/>
+                    <DataGridTextColumn Header="Category" Binding="{Binding eCategory}" MinWidth="100" FontWeight="Bold"/>
                     <DataGridTextColumn Header="Name" Binding="{Binding sName}" MinWidth="200" Width="*"/>
                     <DataGridTextColumn Header="Price" Binding="{Binding sPrice}" Width="60"/>
                     <DataGridTextColumn Header="Weight" Binding="{Binding sWeight}" Width="60"  />
                     <DataGridTextColumn Header="Damage" Binding="{Binding sDamage}"  Width="60" />
-                    <DataGridTextColumn Header="Type" Binding="{Binding eDamageType}"  Width="100" />
+                    <DataGridTextColumn Header="Type" Binding="{Binding eDamageType}"  Width="60" />
                     <DataGridTextColumn Header="Range" Binding="{Binding sRange}"  Width="60" />
                     <DataGridTextColumn Header="Properties" Binding="{Binding sProperties}" MinWidth="100"  Width="*"/>
                     <DataGridTextColumn Header="Boosts" Binding="{Binding sBoosts}" MinWidth="100" Width="*"/>

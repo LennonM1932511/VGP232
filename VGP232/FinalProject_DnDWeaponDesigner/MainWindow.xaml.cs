@@ -35,7 +35,7 @@ namespace FinalProject_DnDWeaponDesigner
 
             // Setup ComboBox with 'All' added
             List<string> weaponCategories = new List<string> { "All" };
-            weaponCategories.AddRange(Enum.GetNames(typeof(Weapon.Category)));            
+            weaponCategories.AddRange(Enum.GetNames(typeof(Weapon.Category)));
             cbCategory.ItemsSource = weaponCategories;
 
             Weapon testSword = new Weapon();
@@ -46,7 +46,7 @@ namespace FinalProject_DnDWeaponDesigner
             testSword.eDamageType = Weapon.DamageType.Piercing;
             testSword.sRange = "5";
             testSword.sWeight = "2";
-            testSword.sProperties = "Finesse, Light";            
+            testSword.sProperties = "Finesse, Light";
             testSword.sDescription = "A sword of a class generally shorter than one meter, but longer than a dagger.";
             testSword.sImage = "images/shortsword.png";
 
@@ -58,11 +58,11 @@ namespace FinalProject_DnDWeaponDesigner
             testSword2.eDamageType = Weapon.DamageType.Slashing;
             testSword2.sRange = "5";
             testSword2.sWeight = "3";
-            testSword2.sProperties = "Versatile (1d10)";            
+            testSword2.sProperties = "Versatile (1d10)";
             testSword2.sDescription = "A sword of a class generally shorter than one meter, but longer than a dagger.";
             testSword2.sImage = "/images/longsword.png";
 
-            weaponlistLoader.Add(testSword);            
+            weaponlistLoader.Add(testSword);
             weaponlistLoader.Add(testSword2);
             weaponlistLoader.Add(testSword);
             weaponlistLoader.Add(testSword2);

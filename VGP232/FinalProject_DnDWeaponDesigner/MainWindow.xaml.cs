@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,9 @@ namespace FinalProject_DnDWeaponDesigner
     {
         WeaponList weaponlistLoader;
         private const string weaponDesignerFiles = "Weapon Designer Files|*.xml;*.json";
+        public bool canSave = false;
+        public bool hasChanged = false;
+        public string projectPath;
 
         public MainWindow()
         {
@@ -31,49 +35,181 @@ namespace FinalProject_DnDWeaponDesigner
 
             // Setup Listbox Default Source
             weaponlistLoader = new WeaponList();
-            dgWeaponList.ItemsSource = weaponlistLoader;
+            dgWeaponList.ItemsSource = weaponlistLoader;            
+        }
 
-            // Setup ComboBox with 'All' added
-            List<string> weaponCategories = new List<string> { "All" };
-            weaponCategories.AddRange(Enum.GetNames(typeof(Weapon.Category)));
-            cbCategory.ItemsSource = weaponCategories;
+        public void Update()
+        {
+            tbWeaponCount.Text = weaponlistLoader.Count().ToString();
 
-            Weapon testSword = new Weapon();
-            testSword.sName = "Shortsword";
-            testSword.eCategory = Weapon.Category.Martial_Melee;
-            testSword.sPrice = "10";
-            testSword.sDamage = "1d6";
-            testSword.eDamageType = Weapon.DamageType.Piercing;
-            testSword.sRange = "5";
-            testSword.sWeight = "2";
-            testSword.sProperties = "Finesse, Light";
-            testSword.sDescription = "A sword of a class generally shorter than one meter, but longer than a dagger.";
-            testSword.sImage = "images/shortsword.png";
+            dgWeaponList.Items.Refresh();
 
-            Weapon testSword2 = new Weapon();
-            testSword2.sName = "Longsword";
-            testSword2.eCategory = Weapon.Category.Martial_Melee;
-            testSword2.sPrice = "15";
-            testSword2.sDamage = "1d8";
-            testSword2.eDamageType = Weapon.DamageType.Slashing;
-            testSword2.sRange = "5";
-            testSword2.sWeight = "3";
-            testSword2.sProperties = "Versatile (1d10)";
-            testSword2.sDescription = "A sword of a class generally shorter than one meter, but longer than a dagger.";
-            testSword2.sImage = "/images/longsword.png";
+            // after updating the collection, remove all SortDescription and add'em back.
+            SortDescriptionCollection sortDescriptions = new SortDescriptionCollection();
+            foreach (SortDescription sd in dgWeaponList.Items.SortDescriptions)
+            {
+                sortDescriptions.Add(sd);
+            }
+            dgWeaponList.Items.SortDescriptions.Clear();
 
-            weaponlistLoader.Add(testSword);
-            weaponlistLoader.Add(testSword2);
-            weaponlistLoader.Add(testSword);
-            weaponlistLoader.Add(testSword2);
-            weaponlistLoader.Add(testSword);
-            weaponlistLoader.Add(testSword2);
+            foreach (SortDescription sd in sortDescriptions)
+            {
+                dgWeaponList.Items.SortDescriptions.Add(sd);
+            }
+        }
 
+        public void Clear()
+        {
+            weaponlistLoader.Clear();
+            hasChanged = false;
         }
 
         private void ExitClicked(object sender, RoutedEventArgs e)
         {
+            Application.Current.Shutdown();
+        }
 
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            WeaponEditor editor = new WeaponEditor();
+
+            if (editor.ShowDialog() == true)
+            {
+                weaponlistLoader.Add(editor.TempWeapon);
+                Update();
+                hasChanged = true;
+            }
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgWeaponList.SelectedIndex != -1)
+            {
+                WeaponEditor editor = new WeaponEditor();
+                editor.EditWeapon((Weapon)dgWeaponList.SelectedItem);
+                if (editor.ShowDialog() == true)
+                {
+                    Update();
+                    hasChanged = true;
+                }
+            }
+        }
+
+        private void RemoveButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgWeaponList.SelectedIndex != -1)
+            {
+                // Remove selected weapon from list
+                weaponlistLoader.Remove((Weapon)dgWeaponList.SelectedItem);
+                Update();
+                hasChanged = true;
+            }
+        }
+
+        private void NewCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            // check if project has changed and ask to save
+            if (hasChanged == true)
+            {
+                if (MessageBoxResult.Yes == MessageBox.Show("You have unsaved changes.\nWould you like to save them now?", "Warning", MessageBoxButton.YesNo))
+                {
+                    // call the save method depending if it was saved before
+                    if (canSave == true)
+                    {
+                        SaveCommand_Executed(this, null);
+                    }
+                    else
+                    {
+                        SaveAsCommand_Executed(this, null);
+                    }
+                }
+            }
+
+            // reset all values to defaults
+            tbProjectTitle.Text = "Untitled Project";
+            tbProjectTitle.FontStyle = FontStyles.Italic;
+            canSave = false;
+            Clear();
+            Update();
+        }
+
+        private void OpenCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            // setup the open dialog
+            OpenFileDialog openFile = new OpenFileDialog
+            {
+                Title = "Open",
+                Filter = weaponDesignerFiles,
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+            };
+
+            if (openFile.ShowDialog() == true)
+            {
+                if (weaponlistLoader.Load(openFile.FileName) != true)
+                {
+                    MessageBox.Show("Unable to open selected project file.", "Format Error");
+                }
+                else
+                {
+                    // Set the displayed project save and keep the path for Save
+                    tbProjectTitle.Text = openFile.SafeFileName;
+                    tbProjectTitle.FontStyle = FontStyles.Normal;
+                    projectPath = openFile.FileName;
+                    canSave = true;
+                    Update();
+                }
+            }
+        }
+
+        private void SaveCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+
+            if (weaponlistLoader.Save(projectPath) != true)
+            {
+                MessageBox.Show("Unable to save project file.", "Format Error");
+            }
+            else
+            {
+                hasChanged = false;
+            }
+        }
+
+        private void SaveAsCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            // setup save dialog
+            SaveFileDialog saveFile = new SaveFileDialog
+            {
+                Title = "Save Project As...",
+                Filter = weaponDesignerFiles,
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+            };
+
+            if (saveFile.ShowDialog() == true)
+            {
+                if (weaponlistLoader.Save(saveFile.FileName) != true)
+                {
+                    MessageBox.Show("Unable to save project file.", "Format Error");
+                }
+                else
+                {
+                    // Set the displayed project save and keep the path for Save
+                    tbProjectTitle.Text = saveFile.SafeFileName;
+                    tbProjectTitle.FontStyle = FontStyles.Normal;
+                    projectPath = saveFile.FileName;
+                    canSave = true;
+                    hasChanged = false;
+                }
+            }
+        }
+
+        private void SaveCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = canSave;
+        }
+
+        private void SaveAsCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = hasChanged;
         }
     }
 }

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="POKéMON EDITOR" Height="420" Width="518" Icon="images/pokeball.png" FontFamily="/Assignment2c;component/#Reactor7" FontSize="32" WindowStartupLocation="CenterScreen" Foreground="White" ResizeMode="NoResize" TextOptions.TextFormattingMode="Display" Background="Black">
     <Grid>
-        <Image Margin="0" Source="images/bluebg.png" Stretch="None"/>
+        <Image Margin="0" Source="images/bluebg.png" Stretch="None" />
         <Label Content="No." HorizontalAlignment="Left" Margin="43,14,0,0" VerticalAlignment="Top" Foreground="White"/>
         <Label Content="Name" HorizontalAlignment="Left" Margin="179,14,0,0" VerticalAlignment="Top" Foreground="White"/>
         <TextBox x:Name="IndexBox" Text="{Binding Index}" HorizontalAlignment="Left" MaxLength="3" Height="28" Margin="88,15,0,0" VerticalAlignment="Top" Width="88" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FFDEDEDE"/>

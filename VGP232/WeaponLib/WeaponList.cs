@@ -24,7 +24,7 @@ namespace WeaponLib
             bool success = false;
 
             if (string.IsNullOrEmpty(fileName))
-            {                
+            {
                 Console.WriteLine("No input file specified.");
             }
             else if (!File.Exists(fileName))
@@ -77,7 +77,7 @@ namespace WeaponLib
             }
 
             return success;
-        }       
+        }
 
         public List<Weapon> GetWeaponCategory(Weapon.Category category)
         {
@@ -95,7 +95,7 @@ namespace WeaponLib
 
             // return a WeaponList containing only weapons of matching category
             return weapons;
-        }        
+        }
 
         public bool LoadXML(string path)
         {
@@ -182,6 +182,6 @@ namespace WeaponLib
                 Console.WriteLine("An exception occurred attempting to access {0}", path.ToString());
             }
             return success;
-        }       
+        }
     }
 }

@@ -38,7 +38,7 @@ namespace WeaponLib
 
         public override string ToString()
         {
-            return string.Format("{0}, {1}, {2} gp, {3} lbs, {4} {5}, {6} ft\n{7}, {8}\n{9}\n{10}\n", 
+            return string.Format("{0}, {1}, {2}, {3} lbs, {4} {5}, {6} ft\n{7}, {8}\n{9}\n{10}\n", 
                 eCategory.ToString(), sName, sPrice, sWeight, sDamage, eDamageType.ToString(), sRange, 
                 sBoosts, sProperties, 
                 sDescription, 

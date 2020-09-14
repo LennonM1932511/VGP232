@@ -23,28 +23,41 @@ namespace FinalProject_DnDWeaponDesigner
     /// </summary>
     public partial class MainWindow : Window
     {
+        // setup the WeaponList class
         WeaponList weaponlistLoader;
+
+        // define the project files for save/open dialogs
         private const string weaponDesignerFiles = "Weapon Designer Files|*.xml;*.json";
+
+        // flags for controlling the menu commands
         public bool canSave = false;
         public bool hasChanged = false;
+
+        // set project path for Save command
         public string projectPath;
+
+        // set initial index count to be displayed
+        public int indexCount = 0;        
 
         public MainWindow()
         {
             InitializeComponent();
 
-            // Setup Listbox Default Source
+            // Setup DataGrid Default Source
             weaponlistLoader = new WeaponList();
-            dgWeaponList.ItemsSource = weaponlistLoader;            
+            dgWeaponList.ItemsSource = weaponlistLoader;
         }
 
+        // update the weapon count, refresh the datagrid, and re-sort
         public void Update()
         {
-            tbWeaponCount.Text = weaponlistLoader.Count().ToString();
+            indexCount = weaponlistLoader.Count();
+            tbWeaponCount.Text = indexCount.ToString();
 
             dgWeaponList.Items.Refresh();
 
             // after updating the collection, remove all SortDescription and add'em back.
+            // this ensures the datagrid is properly updated when already sorted
             SortDescriptionCollection sortDescriptions = new SortDescriptionCollection();
             foreach (SortDescription sd in dgWeaponList.Items.SortDescriptions)
             {
@@ -56,16 +69,48 @@ namespace FinalProject_DnDWeaponDesigner
             {
                 dgWeaponList.Items.SortDescriptions.Add(sd);
             }
+
+            // update the group by category
+            ICollectionView view = CollectionViewSource.GetDefaultView(dgWeaponList.ItemsSource);
+            if (view != null && view.CanGroup == true)
+            {
+                view.GroupDescriptions.Clear();
+                view.GroupDescriptions.Add(new PropertyGroupDescription("eCategory"));
+            }
         }
 
+        // used when opening a new
         public void Clear()
         {
             weaponlistLoader.Clear();
             hasChanged = false;
         }
 
+        public void SaveChanges()
+        {
+            // check if project has changed and ask to save
+            if (hasChanged == true)
+            {
+                if (MessageBoxResult.Yes == MessageBox.Show("You have unsaved changes.\nWould you like to save them now?", "Warning", MessageBoxButton.YesNo))
+                {
+                    // call the save method depending if it was saved before
+                    if (canSave == true)
+                    {
+                        SaveCommand_Executed(this, null);
+                    }
+                    else
+                    {
+                        SaveAsCommand_Executed(this, null);
+                    }
+                }
+            }
+        }
+
         private void ExitClicked(object sender, RoutedEventArgs e)
         {
+            // Ask to save project if changes were made
+            SaveChanges();
+
             Application.Current.Shutdown();
         }
 
@@ -108,22 +153,8 @@ namespace FinalProject_DnDWeaponDesigner
 
         private void NewCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            // check if project has changed and ask to save
-            if (hasChanged == true)
-            {
-                if (MessageBoxResult.Yes == MessageBox.Show("You have unsaved changes.\nWould you like to save them now?", "Warning", MessageBoxButton.YesNo))
-                {
-                    // call the save method depending if it was saved before
-                    if (canSave == true)
-                    {
-                        SaveCommand_Executed(this, null);
-                    }
-                    else
-                    {
-                        SaveAsCommand_Executed(this, null);
-                    }
-                }
-            }
+            // Ask to save project if changes were made
+            SaveChanges();
 
             // reset all values to defaults
             tbProjectTitle.Text = "Untitled Project";
@@ -135,6 +166,9 @@ namespace FinalProject_DnDWeaponDesigner
 
         private void OpenCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
+            // Ask to save project if changes were made
+            SaveChanges();
+
             // setup the open dialog
             OpenFileDialog openFile = new OpenFileDialog
             {
@@ -157,6 +191,12 @@ namespace FinalProject_DnDWeaponDesigner
                     projectPath = openFile.FileName;
                     canSave = true;
                     Update();
+
+                    // Re-sort loaded project contents by category
+                    ICollectionView view = CollectionViewSource.GetDefaultView(dgWeaponList.ItemsSource);
+                    view.SortDescriptions.Clear();
+                    view.SortDescriptions.Add(new SortDescription("eCategory", ListSortDirection.Ascending));
+                    view.Refresh();
                 }
             }
         }
@@ -204,12 +244,12 @@ namespace FinalProject_DnDWeaponDesigner
 
         private void SaveCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = canSave;
+            e.CanExecute = canSave && hasChanged;
         }
 
         private void SaveAsCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = hasChanged;
+            e.CanExecute = hasChanged || indexCount > 0;
         }
     }
 }

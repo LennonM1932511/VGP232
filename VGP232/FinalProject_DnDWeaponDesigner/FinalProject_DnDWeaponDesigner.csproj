@@ -116,12 +116,6 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\shortsword.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\longsword.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="images\bg.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

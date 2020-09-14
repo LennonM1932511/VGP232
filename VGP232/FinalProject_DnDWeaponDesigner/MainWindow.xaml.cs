@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,9 +36,11 @@ namespace FinalProject_DnDWeaponDesigner
 
         // set project path for Save command
         public string projectPath;
+        public string projectFolder;
+        public string projectImagesFolder;
 
         // set initial index count to be displayed
-        public int indexCount = 0;        
+        public int indexCount = 0;
 
         public MainWindow()
         {
@@ -82,8 +85,7 @@ namespace FinalProject_DnDWeaponDesigner
         // used when opening a new
         public void Clear()
         {
-            weaponlistLoader.Clear();
-            hasChanged = false;
+            
         }
 
         public void SaveChanges()
@@ -157,10 +159,18 @@ namespace FinalProject_DnDWeaponDesigner
             SaveChanges();
 
             // reset all values to defaults
+            weaponlistLoader.Clear();
+
             tbProjectTitle.Text = "Untitled Project";
             tbProjectTitle.FontStyle = FontStyles.Italic;
+
+            projectFolder = "";
+            projectImagesFolder = "";
+            projectPath = "";            
+            
+            hasChanged = false;
             canSave = false;
-            Clear();
+
             Update();
         }
 
@@ -209,7 +219,7 @@ namespace FinalProject_DnDWeaponDesigner
                 MessageBox.Show("Unable to save project file.", "Format Error");
             }
             else
-            {
+            {   
                 hasChanged = false;
             }
         }
@@ -232,10 +242,14 @@ namespace FinalProject_DnDWeaponDesigner
                 }
                 else
                 {
-                    // Set the displayed project save and keep the path for Save
+                    // Set the displayed project project name
                     tbProjectTitle.Text = saveFile.SafeFileName;
                     tbProjectTitle.FontStyle = FontStyles.Normal;
-                    projectPath = saveFile.FileName;
+
+                    // set the project path for saving later
+                    projectPath = saveFile.FileName;                                        
+                    
+                    // flags, can now use Save command, and is unchanged again.
                     canSave = true;
                     hasChanged = false;
                 }
@@ -250,6 +264,30 @@ namespace FinalProject_DnDWeaponDesigner
         private void SaveAsCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = hasChanged || indexCount > 0;
+        }
+
+        private void LoadExampleClick(object sender, RoutedEventArgs e)
+        {
+            // set the path to the included example set and load it
+            string basicPath = System.IO.Path.Combine(
+                Directory.GetParent(Environment.CurrentDirectory).Parent.FullName, 
+                "basic_set\\BasicSet.xml");
+
+            if (weaponlistLoader.Load(basicPath) != true)
+            {
+                MessageBox.Show("Unable to open Example Set.", "Format Error");
+            }
+
+            // Set the displayed project save
+            tbProjectTitle.Text = "Example Set";
+            tbProjectTitle.FontStyle = FontStyles.Normal;            
+            Update();
+
+            // Re-sort loaded project contents by category
+            ICollectionView view = CollectionViewSource.GetDefaultView(dgWeaponList.ItemsSource);
+            view.SortDescriptions.Clear();
+            view.SortDescriptions.Add(new SortDescription("eCategory", ListSortDirection.Ascending));
+            view.Refresh();
         }
     }
 }

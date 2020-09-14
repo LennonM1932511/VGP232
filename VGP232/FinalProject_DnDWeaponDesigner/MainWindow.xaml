@@ -33,6 +33,9 @@
                 <Separator />
                 <MenuItem Header="Exit" Click="ExitClicked"/>
             </MenuItem>
+            <MenuItem Header="Tools">
+                <MenuItem Header="Load example set" Click="LoadExampleClick"/>
+            </MenuItem>
         </Menu>
         <Grid DockPanel.Dock="Bottom" Margin="12,4,12,12">
             <Grid.ColumnDefinitions>

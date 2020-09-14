@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfWeapon xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Weapon>
+    <sName>Shortsword</sName>
+    <eCategory>Martial_Melee</eCategory>
+    <sPrice>10 gp</sPrice>
+    <sWeight>2</sWeight>
+    <sDamage>1d6</sDamage>
+    <eDamageType>Piercing</eDamageType>
+    <sRange>5</sRange>
+    <sProperties>Finesse, Light</sProperties>
+    <sDescription>In essence, this weapon was a smaller version of the longsword, but was longer than a dagger or dirk. It possessed many of the same parts, such as a generally double-edged blade, cross-guard, grip, and pommel. The blade was typically 12​ to ​20 inches (0.3​ to ​0.51 meters) long with a sharp point</sDescription>
+    <sImage>/basic_set/shortsword.png</sImage>
+  </Weapon>
+  <Weapon>
+    <sName>Longsword</sName>
+    <eCategory>Martial_Melee</eCategory>
+    <sPrice>15 gp</sPrice>
+    <sWeight>3</sWeight>
+    <sDamage>1d8</sDamage>
+    <eDamageType>Slashing</eDamageType>
+    <sRange>5</sRange>
+    <sProperties>Versatile [1d10]</sProperties>
+    <sDescription>The longsword is an extremely common and very versatile weapon, and is generally laid out in a cruciform pattern with four major sections; the blade, the crossguard, the handle, and the pommel. It has a long, straight, double-edged blade and is typically wielded with one hand but some varying designs have a handle large enough for two hands, which allows warriors to put additional attack power behind their blows.</sDescription>
+    <sImage>/basic_set/longsword.png</sImage>
+  </Weapon>
+  <Weapon>
+    <sName>Club</sName>
+    <eCategory>Simple_Melee</eCategory>
+    <sPrice>1 sp</sPrice>
+    <sWeight>2</sWeight>
+    <sDamage>1d4</sDamage>
+    <eDamageType>Bludgeoning</eDamageType>
+    <sRange>5</sRange>
+    <sProperties>Light</sProperties>
+    <sDescription>Clubs were typically stout, hardwood sticks that narrowed at one end for gripping and widened at the other. However, the appearance of clubs and the materials used to construct them widely varied. Blunt wooden sticks could be considered clubs just as much as table legs, large branches, or tree trunks (in the case of some giants and other large creatures).</sDescription>
+    <sImage>/basic_set/club.png</sImage>
+  </Weapon>
+  <Weapon>
+    <sName>Dagger</sName>
+    <eCategory>Simple_Melee</eCategory>
+    <sPrice>2 gp</sPrice>
+    <sWeight>1</sWeight>
+    <sDamage>1d4</sDamage>
+    <eDamageType>Piercing</eDamageType>
+    <sRange>5</sRange>
+    <sProperties>Finesse, Light, Thrown [20/60]</sProperties>
+    <sDescription>Daggers were short, two-sided blades used for stabbing and thrusting. They were not as long as a short sword, but were larger than a common knife. Daggers were also easily thrown as improvised ranged weapons and were excellent for use in an off-hand for those who preferred dual-wielding melee weapons.</sDescription>
+    <sImage>/basic_set/dagger.png</sImage>
+  </Weapon>
+  <Weapon>
+    <sName>Greatclub</sName>
+    <eCategory>Simple_Melee</eCategory>
+    <sPrice>2 sp</sPrice>
+    <sWeight>10</sWeight>
+    <sDamage>1d8</sDamage>
+    <eDamageType>Bludgeoning</eDamageType>
+    <sRange>5</sRange>
+    <sProperties>Two-Handed</sProperties>
+    <sDescription>Greatclubs were bigger and heavier than regular clubs and typically augmented with spikes, nails and/or bands of iron. It is heavy enough that you can't wield it with one hand. It may be ornate and carved, reinforced with metal, or a simple branch from a tree.</sDescription>
+    <sImage>/basic_set/greatclub.png</sImage>
+  </Weapon>
+  <Weapon>
+    <sName>Quarterstaff</sName>
+    <eCategory>Simple_Melee</eCategory>
+    <sPrice>2 sp</sPrice>
+    <sWeight>4</sWeight>
+    <sDamage>1d6</sDamage>
+    <eDamageType>Bludgeoning</eDamageType>
+    <sRange>5</sRange>
+    <sProperties>Versatile [1d8]</sProperties>
+    <sDescription>Quarterstaves were usually made of wood and sanded cylindrical with a diameter of 2‒4 in (5.1‒10 cm), with blunt ends. Though they could be plain wood, some were intricately carved works of art. Some were known to enhance their quarterstaves with metal-shod ends or textured striking surfaces</sDescription>
+    <sImage>/basic_set/staff.png</sImage>
+  </Weapon>
+  <Weapon>
+    <sName>Shortbow</sName>
+    <eCategory>Simple_Ranged</eCategory>
+    <sPrice>25 gp</sPrice>
+    <sWeight>2</sWeight>
+    <sDamage>1d6</sDamage>
+    <eDamageType>Piercing</eDamageType>
+    <sRange>80/320</sRange>
+    <sProperties>Ammunition, Two-Handed</sProperties>
+    <sDescription>The shortbow is a flexible shaft of wood (or horn or bone) about 3 to 4 feet (0.9 to 1.2 meters) long with the ends connected by strong cord or a gut string that is a little shorter than the shaft, causing the wood to bend and keep the string under tension.</sDescription>
+    <sImage>/basic_set/shortbow.png</sImage>
+  </Weapon>
+  <Weapon>
+    <sName>Sling</sName>
+    <eCategory>Simple_Ranged</eCategory>
+    <sPrice>1 sp</sPrice>
+    <sWeight>-</sWeight>
+    <sDamage>1d4</sDamage>
+    <eDamageType>Bludgeoning</eDamageType>
+    <sRange>30/120</sRange>
+    <sProperties>Ammunition</sProperties>
+    <sDescription>Slings consisted of a cord with a pouch to hold a projectile. These cords were typically made of either leather or some form of fabric.</sDescription>
+    <sImage>/basic_set/sling.png</sImage>
+  </Weapon>
+  <Weapon>
+    <sName>Longbow</sName>
+    <eCategory>Martial_Ranged</eCategory>
+    <sPrice>50 gp</sPrice>
+    <sWeight>2</sWeight>
+    <sDamage>1d8</sDamage>
+    <eDamageType>Piercing</eDamageType>
+    <sRange>150/600</sRange>
+    <sProperties>Ammunition, Heavy, Two-Handed</sProperties>
+    <sDescription>The longbow is a flexible shaft of wood (or horn or bone) about 4 to 6 feet (1.2 to 1.8 meters) long with the ends connected by strong cord or a gut string that is a little shorter than the shaft, causing the wood to bend and keep the string under tension.</sDescription>
+    <sImage>/basic_set/longbow2.png</sImage>
+  </Weapon>
+  <Weapon>
+    <sName>Blowgun</sName>
+    <eCategory>Martial_Ranged</eCategory>
+    <sPrice>10 gp</sPrice>
+    <sWeight>1</sWeight>
+    <sDamage>1</sDamage>
+    <eDamageType>Piercing</eDamageType>
+    <sRange>25/100</sRange>
+    <sProperties>Ammunition, Loading</sProperties>
+    <sDescription>Blowguns were long hollow tubes, ranging from 4​ to ​7 feet (1.2​ to ​2.1 meters) in length. Smaller blowguns were generally made of wood. Larger blowguns could be made out of any metallic substance and could double as clubs. They are generally used to deliver debilitating (but rarely fatal) poisons from a distance and are nearly silent when fired.</sDescription>
+    <sImage>/basic_set/blowgun.png</sImage>
+  </Weapon>
+  <Weapon>
+    <sName>Greataxe</sName>
+    <eCategory>Martial_Melee</eCategory>
+    <sPrice>30 gp</sPrice>
+    <sWeight>7</sWeight>
+    <sDamage>1d12</sDamage>
+    <eDamageType>Slashing</eDamageType>
+    <sRange>5</sRange>
+    <sProperties>Heavy, Two-Handed</sProperties>
+    <sDescription>The greataxe was a large, heavy battleaxe with a double-bladed head. The shaft was usually constructed of stout wood and longer than even a dwarven waraxe, with about half that length being just the grip alone.</sDescription>
+    <sImage>/basic_set/greataxe.png</sImage>
+  </Weapon>
+  <Weapon>
+    <sName>Maul</sName>
+    <eCategory>Martial_Melee</eCategory>
+    <sPrice>10 gp</sPrice>
+    <sWeight>10</sWeight>
+    <sDamage>2d6</sDamage>
+    <eDamageType>Bludgeoning</eDamageType>
+    <sRange>5</sRange>
+    <sProperties>Heavy, Two-Handed</sProperties>
+    <sDescription>Mauls had wedge-shaped heads and a cutting side resembling an axe, though with a thicker, blunter blade. For splitting wood, this tool was considered much better than a typical axe. Their weight was more advantageous and due to their width, it was difficult for them to become stuck in the wood. When used in combat, this heavy weapon was wielded in two hands.</sDescription>
+    <sImage>/basic_set/maul.png</sImage>
+  </Weapon>
+</ArrayOfWeapon>

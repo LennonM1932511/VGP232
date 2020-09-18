@@ -17,6 +17,14 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WeaponLib;
 
+// Final Project
+// NAME: Lennon Marshall
+// STUDENT NUMBER: 1932511
+// CODE:
+// MARKS: 99/100 Excellent work on the implementation. The code is clean and easy to follow. Great work on the visuals and I'm impressed with the DataGrid description.
+// PRESENTATION:
+// MARKS: 20/20 Excellent presentation (intro, demo, code walkthrough). Improvements: use more enums e.g. damage using dices units, and currency (gold, silver etc). Export as PDF, show characters count on the description and metadata list of strings. Challenges: Datagrid customization.
+
 namespace FinalProject_DnDWeaponDesigner
 {
     /// <summary>

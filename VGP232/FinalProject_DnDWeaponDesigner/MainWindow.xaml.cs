@@ -85,7 +85,7 @@ namespace FinalProject_DnDWeaponDesigner
         // used when opening a new
         public void Clear()
         {
-            
+
         }
 
         public void SaveChanges()
@@ -166,8 +166,8 @@ namespace FinalProject_DnDWeaponDesigner
 
             projectFolder = "";
             projectImagesFolder = "";
-            projectPath = "";            
-            
+            projectPath = "";
+
             hasChanged = false;
             canSave = false;
 
@@ -219,7 +219,7 @@ namespace FinalProject_DnDWeaponDesigner
                 MessageBox.Show("Unable to save project file.", "Format Error");
             }
             else
-            {   
+            {
                 hasChanged = false;
             }
         }
@@ -247,8 +247,8 @@ namespace FinalProject_DnDWeaponDesigner
                     tbProjectTitle.FontStyle = FontStyles.Normal;
 
                     // set the project path for saving later
-                    projectPath = saveFile.FileName;                                        
-                    
+                    projectPath = saveFile.FileName;
+
                     // flags, can now use Save command, and is unchanged again.
                     canSave = true;
                     hasChanged = false;
@@ -270,7 +270,7 @@ namespace FinalProject_DnDWeaponDesigner
         {
             // set the path to the included example set and load it
             string basicPath = System.IO.Path.Combine(
-                Directory.GetParent(Environment.CurrentDirectory).Parent.FullName, 
+                Directory.GetParent(Environment.CurrentDirectory).Parent.FullName,
                 "basic_set\\BasicSet.xml");
 
             if (weaponlistLoader.Load(basicPath) != true)
@@ -280,7 +280,7 @@ namespace FinalProject_DnDWeaponDesigner
 
             // Set the displayed project save
             tbProjectTitle.Text = "Example Set";
-            tbProjectTitle.FontStyle = FontStyles.Normal;            
+            tbProjectTitle.FontStyle = FontStyles.Normal;
             Update();
 
             // Re-sort loaded project contents by category

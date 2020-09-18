@@ -29,7 +29,7 @@ namespace FinalProject_DnDWeaponDesigner
 
             // Populate comboboxes with enumerated lists
             cbCategory.ItemsSource = Enum.GetNames(typeof(Weapon.Category));
-            cbType.ItemsSource = Enum.GetNames(typeof(Weapon.DamageType));                
+            cbType.ItemsSource = Enum.GetNames(typeof(Weapon.DamageType));
 
             TempWeapon = new Weapon();
             DataContext = TempWeapon;
@@ -50,7 +50,7 @@ namespace FinalProject_DnDWeaponDesigner
             {
                 Title = "Select image file...",
                 Filter = "Image Files|*.png;*.jpg",
-                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures)                                
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures)
             };
 
             if (browsePath.ShowDialog() == true)

@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:FinalProject_DnDWeaponDesigner"
         mc:Ignorable="d"
         Title="Weapon Designer" 
-        Height="600" MinHeight="450" Width="900" MinWidth="900" 
+        Height="600" MinHeight="450" 
+        Width="900" MinWidth="900" 
         Icon="images/d20.png" 
         FontFamily="/FinalProject_DnDWeaponDesigner;component/#Bookmania"
         WindowStartupLocation="CenterScreen">
@@ -15,7 +16,7 @@
         <CommandBinding Command="Open" Executed="OpenCommand_Executed"/>
         <CommandBinding Command="Save" Executed="SaveCommand_Executed" CanExecute="SaveCommand_CanExecute"/>
         <CommandBinding Command="SaveAs" Executed="SaveAsCommand_Executed" CanExecute="SaveAsCommand_CanExecute"/>
-    </Window.CommandBindings>           
+    </Window.CommandBindings>
     <DockPanel >
         <DockPanel.Background>
             <ImageBrush

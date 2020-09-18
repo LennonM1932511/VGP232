@@ -18,7 +18,7 @@ namespace WeaponLib
         {
             Bludgeoning, Piercing, Slashing
         }
-                
+
         public string sName { get; set; }
         public Category eCategory { get; set; } // enumerated list
         public string sPrice { get; set; } // format: gold, decimal
@@ -30,18 +30,18 @@ namespace WeaponLib
         public string sProperties { get; set; } // format: comma separated
         public string sDescription { get; set; } // text description
         public string sImage { get; set; } // path to optional image
-        
+
 
         public Weapon()
         {
-        }        
+        }
 
         public override string ToString()
         {
-            return string.Format("{0}, {1}, {2}, {3} lbs, {4} {5}, {6} ft\n{7}, {8}\n{9}\n{10}\n", 
-                eCategory.ToString(), sName, sPrice, sWeight, sDamage, eDamageType.ToString(), sRange, 
-                sBoosts, sProperties, 
-                sDescription, 
+            return string.Format("{0}, {1}, {2}, {3} lbs, {4} {5}, {6} ft\n{7}, {8}\n{9}\n{10}\n",
+                eCategory.ToString(), sName, sPrice, sWeight, sDamage, eDamageType.ToString(), sRange,
+                sBoosts, sProperties,
+                sDescription,
                 sImage);
         }
     }

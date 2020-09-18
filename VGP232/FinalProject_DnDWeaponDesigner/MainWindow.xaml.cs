@@ -82,12 +82,6 @@ namespace FinalProject_DnDWeaponDesigner
             }
         }
 
-        // used when opening a new
-        public void Clear()
-        {
-
-        }
-
         public void SaveChanges()
         {
             // check if project has changed and ask to save
@@ -213,7 +207,7 @@ namespace FinalProject_DnDWeaponDesigner
 
         private void SaveCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-
+            // Quick save and set back to unchanged
             if (weaponlistLoader.Save(projectPath) != true)
             {
                 MessageBox.Show("Unable to save project file.", "Format Error");
@@ -258,11 +252,13 @@ namespace FinalProject_DnDWeaponDesigner
 
         private void SaveCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
+            // Command can only be excuted if both canSave and hasChanged are flagged true
             e.CanExecute = canSave && hasChanged;
         }
 
         private void SaveAsCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
+            // Save As can only be excuted once hasChanged is flagged AND the list has at least one entry
             e.CanExecute = hasChanged || indexCount > 0;
         }
 

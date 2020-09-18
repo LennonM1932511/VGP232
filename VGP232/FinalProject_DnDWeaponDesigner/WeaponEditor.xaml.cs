@@ -37,6 +37,7 @@ namespace FinalProject_DnDWeaponDesigner
 
         public void EditWeapon(Weapon weapon)
         {
+            // If window is accessed by EDIT button, setup weapon data and title
             TempWeapon = weapon;
             DataContext = TempWeapon;
             Title = "EDIT WEAPON";
